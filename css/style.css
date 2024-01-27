@@ -70,17 +70,35 @@ button{
 }
 a{
     background-color: antiquewhite;
-	width: 16vw;
-	height: 9vw;
+    width: 20vw;
+    height: 10vw;
     margin-bottom: 9vw;
     display: flex;
     align-items: end;
     justify-content: center;
 }
 
-/* @media screen and (min-aspect-ratio: 4/3) {
-	a {
-		width: 133.33vh;
-		height: 100vh;
-	}
-} */
+@media (max-width: 1200px) {
+    a{
+        width: 20vw;
+        height: 10vw;
+    }
+}
+@media (max-width: 992px) {
+    a{
+        width: 24vw;
+        height: 12vw;
+    }
+    button{
+        font-size: 3vw;
+    }
+}
+@media (max-width: 767px) {
+    a{
+        width: 30vw;
+        height: 15vw;
+    }
+    button{
+        font-size: 3.5vw;
+    }
+}
