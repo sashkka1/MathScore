@@ -95,7 +95,7 @@ a{
 }
 @media (max-width: 767px) {
     a{
-        width: 30vw;
+        width: 50vw;
         height: 15vw;
     }
     button{
