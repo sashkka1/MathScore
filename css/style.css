@@ -95,10 +95,10 @@ a{
 }
 @media (max-width: 767px) {
     a{
-        width: 80vw;
-        height: 50vw;
+        width: 44vw;
+        height: 22vw;
     }
     button{
-        font-size: 3.5vw;
+        font-size: 5vw;
     }
 }
