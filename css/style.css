@@ -60,16 +60,23 @@ button{
     height: 100%;
     width: 100%;
     border-radius: 5px;
-    background-color: rgb(21, 142, 194);
+    box-shadow: 0px 1px 4px  rgb(92, 92, 92);
+    background-color: rgb(28, 170, 231);
     color: white;
     font-size: 2.5vw;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition-duration: 0.4s;
 }
+
+button:hover{
+    background-color: rgb(23, 139, 189);
+    transition-duration: 0.4s;
+}
+
 a{
-    background-color: antiquewhite;
     width: 20vw;
     height: 10vw;
     margin-bottom: 9vw;
