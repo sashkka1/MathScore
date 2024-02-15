@@ -80,17 +80,17 @@ body{
 }
 @media (max-width: 250px) {
     .main{
-        background-color: rgb(226, 235, 245);
+        background-color: rgb(86, 135, 190);
     }
 }
 @media (max-width: 200px) {
     .main{
-        background-color: rgb(72, 79, 26);
+        background-color: rgb(171, 188, 56);
     }
 }
 @media (max-width: 150px) {
     .main{
-        background-color: rgb(14, 13, 12);
+        background-color: rgb(216, 131, 46);
     }
 }
 
