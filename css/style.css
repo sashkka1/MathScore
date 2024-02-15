@@ -78,6 +78,7 @@ a{
     justify-content: center;
 }
 
+
 @media (max-width: 1200px) {
     a{
         width: 20vw;
@@ -102,3 +103,4 @@ a{
         font-size: 5vw;
     }
 }
+
