@@ -69,12 +69,12 @@ input{
     bottom: 0px;
     position: absolute;
     bottom: 30px;
-    background-color: aqua;
 }
 .keyboard button{
     width: 26%;
     height: 5vh;
-    display: block;
+    display: flex;
+    text-align: center;
     margin: 3px;
 }
 .keyboard .number p{
@@ -82,7 +82,9 @@ input{
     /* font-size: 2vw; */
 }
 
-
+.keyboard img{
+    height: 4.5vh;
+}
 
 
 
