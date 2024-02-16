@@ -53,46 +53,7 @@ body{
     }
 }
 
-@media (max-width: 500px) {
-    .main{
-        background-color: rgb(245, 226, 226);
-    }
-}
-@media (max-width: 450px) {
-    .main{
-        background-color: rgb(79, 26, 26);
-    }
-}
-@media (max-width: 400px) {
-    .main{
-        background-color: rgb(14, 12, 12);
-    }
-}
-@media (max-width: 350px) {
-    .main{
-        background-color: rgb(122, 238, 192);
-    }
-}
-@media (max-width: 300px) {
-    .main{
-        background-color: rgb(238, 122, 234);
-    }
-}
-@media (max-width: 250px) {
-    .main{
-        background-color: rgb(86, 135, 190);
-    }
-}
-@media (max-width: 200px) {
-    .main{
-        background-color: rgb(171, 188, 56);
-    }
-}
-@media (max-width: 150px) {
-    .main{
-        background-color: rgb(216, 131, 46);
-    }
-}
+
 
 /* @media (max-width: 992px) {
     a{
