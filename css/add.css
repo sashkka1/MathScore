@@ -64,12 +64,16 @@ input{
     justify-content: center;
     align-items: flex-end;
     flex-wrap: wrap;
-    height: 300px;
+    width: 700px;
+    height: 25vh;
     bottom: 0px;
+    position: absolute;
+    bottom: 30px;
+    background-color: aqua;
 }
 .keyboard button{
     width: 26%;
-    height: 70px;
+    height: 5vh;
     display: block;
     margin: 3px;
 }
