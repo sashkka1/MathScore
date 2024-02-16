@@ -15,6 +15,10 @@ body{
     box-shadow: 0px 3px 10px  rgb(216, 216, 216);
     border-radius: 5px;
 }
+p{
+    color: blue;
+    font-size: 30px;
+}
 
 .header{
     top: 0;
@@ -27,14 +31,33 @@ body{
     width: 45px;
     height: 45px;
     margin: 30px 0px 30px 30px;
+    border-radius: 100%;
+    box-shadow: 0px 1px 4px  rgb(92, 92, 92);
+    background-color: rgb(28, 170, 231);
 }
 .header img{ 
     height: 45px;
 }
-
 .score{
     margin: 0px 30px 0px 0px;
 }
+
+.example-block{
+    margin: 0 auto;
+    margin-top: 15vh;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 992px) {
     .main{
