@@ -1,12 +1,13 @@
 "use strict";
 
-var answer =0;
+var answer = 0;
 var score = 0;
 var mistake = 0;
 var example = 10;
-
+console.log('начало');
 window.onload = function () {
     firstTry();
+    console.log('начало');
 }
 
 function firstTry(){
