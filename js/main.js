@@ -4,14 +4,14 @@ var answer = 0;
 var score = 0;
 var mistake = 0;
 var example = 10;
-console.log('начало');
 window.onload = function () {
     firstTry();
-    console.log('начало');
+    console.log('window.onload = function');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     firstTry(); // Вызов функции после загрузки DOM-дерева
+    console.log('document.addEventListener(, function(');
 });
 
 function firstTry(){
@@ -19,10 +19,10 @@ function firstTry(){
     mistake = sessionStorage.getItem('mistake');
     example = sessionStorage.getItem('example');
     example = 10;
-    if(document.location.href == 'http://127.0.0.1:5501/MathScore/html/add.html'){
+    if(document.location.href == 'https://sashkka1.github.io/MathScore/html/add.html'){
         score = 0;
         setExample();
-    } else if(document.location.href == 'http://127.0.0.1:5501/MathScore/index.html' && score == example){
+    } else if(document.location.href == 'https://sashkka1.github.io/MathScore/index.html' && score == example){
         let inputExample = document.getElementById('message-first') ;
         inputExample.outerHTML = `<p class="message-first"> Уровень завершен <br><br> Количество решенных примеров: <br> ${example}<br><br>   Количество ошибок:<br>  ${mistake}</p>`;
     }
@@ -153,7 +153,7 @@ function numberEnter(){
         blink('inputAnswer','red')
     }
     if(score>=example){
-        document.location.href = 'http://127.0.0.1:5501/MathScore/index.html';
+        document.location.href = 'https://sashkka1.github.io/MathScore/index.html';
         sessionStorage.setItem('score',score);
         sessionStorage.setItem('mistake',mistake);
         sessionStorage.setItem('example',example);
