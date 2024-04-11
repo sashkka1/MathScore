@@ -6,13 +6,7 @@ var mistake = 0;
 var example = 10;
 window.onload = function () {
     firstTry();
-    console.log('window.onload = function');
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    firstTry(); // Вызов функции после загрузки DOM-дерева
-    console.log('document.addEventListener(, function(');
-});
 
 function firstTry(){
     score = sessionStorage.getItem('score');
