@@ -145,18 +145,18 @@ function numberEnter(){
 
     if(answerUser == answer){
         score++;
+        if(score>=example){
+            document.location.href = 'https://sashkka1.github.io/MathScore/index.html';
+            sessionStorage.setItem('score',score);
+            sessionStorage.setItem('mistake',mistake);
+            sessionStorage.setItem('example',example);
+        }
         setExample();
         numberDelete();
         blink('inputAnswer','green')
     } else{
         mistake++;
         blink('inputAnswer','red')
-    }
-    if(score>=example){
-        document.location.href = 'https://sashkka1.github.io/MathScore/index.html';
-        sessionStorage.setItem('score',score);
-        sessionStorage.setItem('mistake',mistake);
-        sessionStorage.setItem('example',example);
     }
 };
 
