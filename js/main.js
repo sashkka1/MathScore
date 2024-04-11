@@ -10,6 +10,10 @@ window.onload = function () {
     console.log('начало');
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    firstTry(); // Вызов функции после загрузки DOM-дерева
+});
+
 function firstTry(){
     score = sessionStorage.getItem('score');
     mistake = sessionStorage.getItem('mistake');
