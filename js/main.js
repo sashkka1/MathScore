@@ -30,115 +30,115 @@ function firstTry(){
     sessionStorage.setItem('example', example);
 }
 function setOne(){
-    let input = document.getElementById('inputAnswer') ;
-    let answer = input.getAttribute('value');
+    let input = document.getElementById('inputAnswer')
+    let answer = input.textContent ;
     if(answer.length < 6){
-        answer = input.getAttribute('value') + 1 ;
-        input.outerHTML = `<input id="inputAnswer" type="text" value="${ answer }">`;
+        answer += 1 ;
+        input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answer }</p>`;
     } else{
         blink('inputAnswer','red')
     }
 };
 function setTwo(){
-    let input = document.getElementById('inputAnswer') ;
-    let answer = input.getAttribute('value');
+    let input = document.getElementById('inputAnswer')
+    let answer = input.textContent ;
     if(answer.length < 6){
-        answer = input.getAttribute('value') + 2 ;
-        input.outerHTML = `<input id="inputAnswer" type="text" value="${ answer }">`;
+        answer += 2 ;
+        input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answer }</p>`;
     } else{
         blink('inputAnswer','red')
     }
 };
 function setThree(){
-    let input = document.getElementById('inputAnswer') ;
-    let answer = input.getAttribute('value');
+    let input = document.getElementById('inputAnswer')
+    let answer = input.textContent ;
     if(answer.length < 6){
-        answer = input.getAttribute('value') + 3 ;
-        input.outerHTML = `<input id="inputAnswer" type="text" value="${ answer }">`;
+        answer += 3 ;
+        input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answer }</p>`;
     } else{
         blink('inputAnswer','red')
     }
 };
 function setFour(){
-    let input = document.getElementById('inputAnswer') ;
-    let answer = input.getAttribute('value');
+    let input = document.getElementById('inputAnswer')
+    let answer = input.textContent ;
     if(answer.length < 6){
-        answer = input.getAttribute('value') + 4 ;
-        input.outerHTML = `<input id="inputAnswer" type="text" value="${ answer }">`;
+        answer += 4 ;
+        input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answer }</p>`;
     } else{
         blink('inputAnswer','red')
     }
 };
 function setFive(){
-    let input = document.getElementById('inputAnswer') ;
-    let answer = input.getAttribute('value');
+    let input = document.getElementById('inputAnswer')
+    let answer = input.textContent ;
     if(answer.length < 6){
-        answer = input.getAttribute('value') + 5 ;
-        input.outerHTML = `<input id="inputAnswer" type="text" value="${ answer }">`;
+        answer += 5 ;
+        input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answer }</p>`;
     } else{
         blink('inputAnswer','red')
     }
 };
 function setSix(){
-    let input = document.getElementById('inputAnswer') ;
-    let answer = input.getAttribute('value');
+    let input = document.getElementById('inputAnswer')
+    let answer = input.textContent ;
     if(answer.length < 6){
-        answer = input.getAttribute('value') + 6 ;
-        input.outerHTML = `<input id="inputAnswer" type="text" value="${ answer }">`;
+        answer += 6 ;
+        input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answer }</p>`;
     } else{
         blink('inputAnswer','red')
     }
 };
 function setSeven(){
-    let input = document.getElementById('inputAnswer') ;
-    let answer = input.getAttribute('value');
+    let input = document.getElementById('inputAnswer')
+    let answer = input.textContent ;
     if(answer.length < 6){
-        answer = input.getAttribute('value') + 7 ;
-        input.outerHTML = `<input id="inputAnswer" type="text" value="${ answer }">`;
+        answer += 7 ;
+        input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answer }</p>`;
     } else{
         blink('inputAnswer','red')
     }
 };
 function setEight(){
-    let input = document.getElementById('inputAnswer') ;
-    let answer = input.getAttribute('value');
+    let input = document.getElementById('inputAnswer')
+    let answer = input.textContent ;
     if(answer.length < 6){
-        answer = input.getAttribute('value') + 8 ;
-        input.outerHTML = `<input id="inputAnswer" type="text" value="${ answer }">`;
+        answer += 8 ;
+        input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answer }</p>`;
     } else{
         blink('inputAnswer','red')
     }
 };
 function setNine(){
-    let input = document.getElementById('inputAnswer') ;
-    let answer = input.getAttribute('value');
+    let input = document.getElementById('inputAnswer')
+    let answer = input.textContent ;
     if(answer.length < 6){
-        answer = input.getAttribute('value') + 9 ;
-        input.outerHTML = `<input id="inputAnswer" type="text" value="${ answer }">`;
+        answer += 9 ;
+        input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answer }</p>`;
     } else{
         blink('inputAnswer','red')
     }
 };
 function setZero(){
-    let input = document.getElementById('inputAnswer') ;
-    let answer = input.getAttribute('value');
+    let input = document.getElementById('inputAnswer')
+    let answer = input.textContent ;
     if(answer.length < 6){
-        answer = input.getAttribute('value') + 0 ;
-        input.outerHTML = `<input id="inputAnswer" type="text" value="${ answer }">`;
+        answer += 0 ;
+        input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answer }</p>`;
     } else{
         blink('inputAnswer','red')
     }
 };
 function numberDelete(){
-    let input = document.getElementById('inputAnswer') ;
-    let answer = input.getAttribute('value');
+    let input = document.getElementById('inputAnswer')
+    let answer = input.textContent ;
     let answerNew = answer.slice(0,answer.length-1);
-    input.outerHTML = `<input id="inputAnswer" type="text" value="${ answerNew }">`;
+    input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answerNew }</p>`;
 };
 
 function numberEnter(){
     let inputAnswerUser = document.getElementById('inputAnswer') ;
-    let answerUser = inputAnswerUser.getAttribute('value');
+    let answerUser = inputAnswerUser.textContent;
 
     if(answerUser == answer){
         score++;
@@ -151,7 +151,7 @@ function numberEnter(){
         }
         setExample();
         let answerEmpty = '';
-        inputAnswerUser.outerHTML = `<input id="inputAnswer" type="text" value="${ answerEmpty }">`;
+        inputAnswerUser.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answerEmpty }</p>`;
         blink('inputAnswer','green')
     } else{
         mistake++;
