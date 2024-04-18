@@ -11,8 +11,6 @@ window.onload = function () {
 function firstTry(){
     score = sessionStorage.getItem('score');
     mistake = sessionStorage.getItem('mistake');
-    countExample = sessionStorage.getItem('countExample');
-    countExample = 10;
     if(document.location.href == 'https://sashkka1.github.io/MathScore/html/add.html'){
     // if(document.location.href == 'http://127.0.0.1:5501/MathScore/html/add.html'){
         score = 0;
@@ -26,7 +24,6 @@ function firstTry(){
     mistake = 0;
     sessionStorage.setItem('score', score);
     sessionStorage.setItem('mistake',mistake );
-    sessionStorage.setItem('countExample', countExample);
 }
 function setOne(){
     let input = document.getElementById('inputAnswer')
@@ -146,7 +143,6 @@ function numberEnter(){
             // document.location.href = 'http://127.0.0.1:5501/MathScore/index.html';
             sessionStorage.setItem('score',score);
             sessionStorage.setItem('mistake',mistake);
-            sessionStorage.setItem('countExample',countExample);
         }
         setExample();
         let answerEmpty = '';
