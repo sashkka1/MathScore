@@ -3,7 +3,7 @@
 var answer = 0;
 var score = 0;
 var mistake = 0;
-var example = 10;
+var countExample = 10;
 window.onload = function () {
     firstTry();
 }
@@ -11,23 +11,22 @@ window.onload = function () {
 function firstTry(){
     score = sessionStorage.getItem('score');
     mistake = sessionStorage.getItem('mistake');
-    example = sessionStorage.getItem('example');
-    example = 10;
+    countExample = sessionStorage.getItem('countExample');
+    countExample = 10;
     if(document.location.href == 'https://sashkka1.github.io/MathScore/html/add.html'){
     // if(document.location.href == 'http://127.0.0.1:5501/MathScore/html/add.html'){
         score = 0;
         setExample();
     } else if(document.location.href == 'https://sashkka1.github.io/MathScore/index.html' && score == example){
-    // } else if(document.location.href == 'http://127.0.0.1:5501/MathScore/index.html' && score == example){
+    // } else if(document.location.href == 'http://127.0.0.1:5501/MathScore/index.html' && score == countExample){
         let inputExample = document.getElementById('message-first') ;
-        inputExample.outerHTML = `<p class="message-first"> Уровень завершен <br><br> Количество решенных примеров: <br> ${example}<br><br>   Количество ошибок:<br>  ${mistake}</p>`;
+        inputExample.outerHTML = `<p class="message-first"> Уровень завершен <br><br> Количество решенных примеров: <br> ${countExample}<br><br>   Количество ошибок:<br>  ${mistake}</p>`;
     }
     score = 0;
     mistake = 0;
-    example = 10;
     sessionStorage.setItem('score', score);
     sessionStorage.setItem('mistake',mistake );
-    sessionStorage.setItem('example', example);
+    sessionStorage.setItem('countExample', countExample);
 }
 function setOne(){
     let input = document.getElementById('inputAnswer')
@@ -142,12 +141,12 @@ function numberEnter(){
 
     if(answerUser == answer){
         score++;
-        if(score>=example){
+        if(score>=countExample){
             document.location.href = 'https://sashkka1.github.io/MathScore/index.html';
             // document.location.href = 'http://127.0.0.1:5501/MathScore/index.html';
             sessionStorage.setItem('score',score);
             sessionStorage.setItem('mistake',mistake);
-            sessionStorage.setItem('example',example);
+            sessionStorage.setItem('countExample',countExample);
         }
         setExample();
         let answerEmpty = '';
@@ -207,7 +206,7 @@ function setExample(){
     }
     inputExample.outerHTML = `<p id="example">${ firstNumber } ${ symbolArray[symbol] } ${ lastNumber } = </p>`;
     console.log(answer);
-    inputScore.outerHTML = `<p id="score">${score}/${example}</p>`;
+    inputScore.outerHTML = `<p id="score">${score}/${countExample}</p>`;
 }
 
 function blink(input, color){
