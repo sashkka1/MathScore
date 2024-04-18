@@ -4,26 +4,54 @@ var answer = 0;
 var score = 0;
 var mistake = 0;
 var countExample = 10;
+var seconds = 0;
+var timeArray = [0, 0, 0, 0,0,0,0,0,0,0,];
 window.onload = function () {
     firstTry();
+}
+
+function timer() {
+    seconds++; 
+    let input = document.getElementById('time') ;
+    input.outerHTML = `<p id="time">${seconds}</p>`;
 }
 
 function firstTry(){
     score = sessionStorage.getItem('score');
     mistake = sessionStorage.getItem('mistake');
+    let timeArrayString
+    timeArrayString = sessionStorage.getItem('timeArray');
+    timeArray = timeArrayString.split(',');
+    let min;
+    let max = 0;
+    let total = 0;
+    for(let i=0;i<10;i++){
+        total += Number(timeArray[i]);
+        console.log(timeArray[i]);
+        if(timeArray[i]>= max){
+            max = timeArray[i];
+        } else{
+            min = timeArray[i];
+        }
+    };
+    console.log(`total ${total}  max ${max}  min ${min}  avr ${avr} timeArray ${timeArray}`);
     if(document.location.href == 'https://sashkka1.github.io/MathScore/html/add.html'){
     // if(document.location.href == 'http://127.0.0.1:5501/MathScore/html/add.html'){
         score = 0;
         setExample();
+        seconds = 0;
+        var interval = setInterval(timer, 1000);
     } else if(document.location.href == 'https://sashkka1.github.io/MathScore/index.html' && score == example){
     // } else if(document.location.href == 'http://127.0.0.1:5501/MathScore/index.html' && score == countExample){
         let inputExample = document.getElementById('message-first') ;
-        inputExample.outerHTML = `<p class="message-first"> Уровень завершен <br><br> Количество решенных примеров: <br> ${countExample}<br><br>   Количество ошибок:<br>  ${mistake}</p>`;
+        inputExample.outerHTML = `<p class="message-first"> Уровень завершен <br><br> Количество решенных примеров: <br> ${countExample}<br><br>   Количество ошибок:<br>  ${mistake} <br><br> Время(секунд): <br>total - ${total}, max - ${max}, min - ${min}</p>`;
     }
     score = 0;
     mistake = 0;
+    timeArray = [0, 0, 0, 0,0,0,0,0,0,0,];
     sessionStorage.setItem('score', score);
     sessionStorage.setItem('mistake',mistake );
+    sessionStorage.setItem('timeArray',timeArray );
 }
 function setOne(){
     let input = document.getElementById('inputAnswer')
@@ -137,12 +165,15 @@ function numberEnter(){
     let answerUser = inputAnswerUser.textContent;
 
     if(answerUser == answer){
+        timeArray [score] = seconds;
+        seconds =0;
         score++;
         if(score>=countExample){
             document.location.href = 'https://sashkka1.github.io/MathScore/index.html';
             // document.location.href = 'http://127.0.0.1:5501/MathScore/index.html';
             sessionStorage.setItem('score',score);
             sessionStorage.setItem('mistake',mistake);
+            sessionStorage.setItem('timeArray',timeArray);
         }
         setExample();
         let answerEmpty = '';
