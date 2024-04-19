@@ -18,6 +18,7 @@ function timer() {
 
 function firstTry(){
     score = sessionStorage.getItem('score');
+    console.log(`score ${score}  countExample ${countExample}`);
     if(document.location.href == 'https://sashkka1.github.io/MathScore/html/add.html'){
     // if(document.location.href == 'http://127.0.0.1:5501/MathScore/html/add.html'){
         score = 0;
@@ -35,7 +36,6 @@ function firstTry(){
         let total = 0;
         for(let i=0;i<10;i++){
             total += Number(timeArray[i]);
-            console.log(timeArray[i]);
             if(timeArray[i]>= max){
                 max = timeArray[i];
             } else{
