@@ -16,6 +16,7 @@ function timer() {
     input.outerHTML = `<p id="time">${seconds}</p>`;
 }
 
+
 function firstTry(){
     score = sessionStorage.getItem('score');
     if(document.location.href == 'https://sashkka1.github.io/MathScore/html/add.html'){
