@@ -80,6 +80,9 @@ button:hover{
 .operatorChoice{
     display: flex;
 }
+.operatorChoice p{
+    margin-right: 15px;
+}
 
 a{
     width: 20vw;
@@ -143,9 +146,9 @@ a{
 
 
 
-body {
+/* body { */
     /* padding: 20% 0; */
-    font: 15px Open Sans;
+    /* font: 15px Open Sans;
 }
 .easy-basket-filter {
     width: 50%;
@@ -191,16 +194,16 @@ body {
     background-color: #01bab0;
     width: 30px;
     text-align:center;
-}
+} */
 /***** Position dual *****/
-.range {
+/* .range {
     position: absolute;
     left: 0;
     top: 0;
-}
+} */
 
 /****** Style range ******/
-input[type=range] {
+/* input[type=range] {
     -webkit-appearance: none;
     width: 100%;
     margin: 0;
@@ -270,4 +273,4 @@ input[type=range].lower::-webkit-slider-runnable-track {
             transform: translate(-50%, 50%);
     text-align: center;
     width: 40px;
-}
+} */
