@@ -18,14 +18,13 @@ function timer() {
 
 function firstTry(){
     score = sessionStorage.getItem('score');
-    console.log(`score ${score}  countExample ${countExample}`);
     if(document.location.href == 'https://sashkka1.github.io/MathScore/html/add.html'){
     // if(document.location.href == 'http://127.0.0.1:5501/MathScore/html/add.html'){
         score = 0;
         setExample();
         seconds = 0;
         var interval = setInterval(timer, 1000);
-    } else if(document.location.href == 'https://sashkka1.github.io/MathScore/index.html' && score == example){
+    } else if(document.location.href == 'https://sashkka1.github.io/MathScore/index.html' && score == countExample){
     // } else if(document.location.href == 'http://127.0.0.1:5501/MathScore/index.html' && score == countExample){
         mistake = sessionStorage.getItem('mistake');
         let timeArrayString =[];
