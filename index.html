@@ -12,8 +12,17 @@
 
     <div class="choice">
         <p id="message-first" class="message-first"></p>
-        <a href="/MathScore/html/add.html" >
-            <button >Начать</button>
+        <!-- <p class="message-first"> Уровень завершен <br><br>Количество ошибок:<br>  1111 <br><br> Время(секунд): <br>total - 111, max - 11, min - 1</p> -->
+        <div class="operatorChoice">
+            <form action="#" method="get" enctype="multipart/form-data"></form>
+            <p><input onchange="check(this)" checked type="checkbox" value="+"> +</p>
+            <p><input onchange="check(this)" checked type="checkbox" value="-"> -</p>
+            <p><input onchange="check(this)" checked type="checkbox" value="x"> x</p>
+            <p><input onchange="check(this)" checked type="checkbox" value="/"> /</p>
+        </div>
+
+        <a>
+            <button onclick="start()">Начать</button>
         </a>
     </div>
 

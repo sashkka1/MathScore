@@ -55,7 +55,7 @@ h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: 400;}
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: column;
 }
 button{
@@ -77,6 +77,10 @@ button:hover{
     background-color: rgb(23, 139, 189);
     transition-duration: 0.4s;
 }
+.operatorChoice{
+    background-color: bisque;
+    /* height: 100px; */
+}
 
 a{
     width: 20vw;
@@ -93,6 +97,7 @@ a{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: aqua;
 }
 
 @media (max-width: 1200px) {

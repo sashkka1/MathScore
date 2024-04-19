@@ -6,6 +6,8 @@ var mistake = 0;
 var countExample = 10;
 var seconds = 0;
 var timeArray = [0, 0, 0, 0,0,0,0,0,0,0,];
+var forScore = [0,0,0,0,];
+
 window.onload = function () {
     firstTry();
 }
@@ -15,7 +17,6 @@ function timer() {
     let input = document.getElementById('time') ;
     input.outerHTML = `<p id="time">${seconds}</p>`;
 }
-
 
 function firstTry(){
     score = sessionStorage.getItem('score');
@@ -44,7 +45,7 @@ function firstTry(){
         };
 
         let inputExample = document.getElementById('message-first') ;
-        inputExample.outerHTML = `<p class="message-first"> Уровень завершен <br><br> Количество решенных примеров: <br> ${countExample}<br><br>   Количество ошибок:<br>  ${mistake} <br><br> Время(секунд): <br>total - ${total}, max - ${max}, min - ${min}</p>`;
+        inputExample.outerHTML = `<p class="message-first"> Уровень завершен <br><br>Количество ошибок:<br>  ${mistake} <br><br> Время(секунд): <br>total - ${total}, max - ${max}, min - ${min}</p>`;
     }
     score = 0;
     mistake = 0;
@@ -53,6 +54,39 @@ function firstTry(){
     sessionStorage.setItem('mistake',mistake );
     sessionStorage.setItem('timeArray',timeArray );
 }
+
+function check(thisCheckbox){
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let test =0;
+    for(let i =0;i<=3;i++){
+        if(checkboxes[i].checked){
+            test++;
+        }
+    }
+    if(test == 0){
+        thisCheckbox.checked = true;
+    }
+}      
+
+function start(){
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    forScore = [0,0,0,0,];
+    for(let i =0;i<=3;i++){
+        if(checkboxes[i].checked){
+            forScore[i] = 1;
+        }else{
+            forScore[i] = 0;
+        }
+    }
+    sessionStorage.setItem('forScore',forScore);
+    document.location.href = 'http://127.0.0.1:5501/MathScore/html/add.html'
+    score = 0;
+    setExample();
+    seconds = 0;
+    var interval = setInterval(timer, 1000);
+}
+
+
 function setOne(){
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
@@ -186,16 +220,39 @@ function numberEnter(){
 };
 
 function setExample(){
+    let test= sessionStorage.getItem('forScore',forScore);
+    let timeArrayString =[];
+    timeArrayString = sessionStorage.getItem('timeArray');
+    forScore = test.split(',');// 1+  2-  3x  4/
+    // console.log(`forScore - ${forScore}`);
+
+
     let inputExample = document.getElementById('example') ;
     let inputScore = document.getElementById('score') ;
 
     let firstNumber = 0;
     let lastNumber = 0;
 
-    let symbolArray = ['-', '+', '*', '/',];
+    let symbolArray = ['+', '-', '*', '/',];
     var symbol = Math.round(Math.random(0,100)*3);
+    console.log(`forScore - ${forScore}`);
+    for(let i=0;i<5;){
+        var symbol = Math.round(Math.random(0,100)*3);
+        console.log(`forScore[symbol] - ${forScore[symbol]}`);
+        console.log(`symbol - ${symbol}`);
+        if(forScore[symbol] == 0){
+            console.log(`symbol in - ${symbol}`);
+        }else{
+            i=10;
+        }
+    }
     switch(symbol){
-        case 0: // '-'
+        case 0: // '+'
+            firstNumber = Math.round(Math.random(0,100)*100);
+            lastNumber = Math.round(Math.random(0,100)*100);
+            answer = firstNumber + lastNumber;
+        break;
+        case 1:// '-'
             for(let i =0;i < 1;){
                 firstNumber = Math.round(Math.random(0,100)*100);
                 lastNumber = Math.round(Math.random(0,100)*100);
@@ -205,11 +262,6 @@ function setExample(){
                     i++;
                 }
             }
-        break;
-        case 1:// '+'
-            firstNumber = Math.round(Math.random(0,100)*100);
-            lastNumber = Math.round(Math.random(0,100)*100);
-            answer = firstNumber + lastNumber;
         break;
         case 2:// '*'
             firstNumber = Math.round(Math.random(0,100)*20);
