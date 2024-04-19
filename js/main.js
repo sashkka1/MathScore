@@ -72,7 +72,7 @@ function check(thisCheckbox){
 
 function start(){
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    forScore = [0,0,0,0,];
+    forScore = [0,0,0,0,0,0,0,0,];
     for(let i =0;i<=3;i++){
         if(checkboxes[i].checked){
             forScore[i] = 1;
@@ -80,6 +80,13 @@ function start(){
             forScore[i] = 0;
         }
     }
+
+    var inputLower = document.querySelectorAll('input[type="text"]');
+    forScore[4]= inputLower[0].value;
+    forScore[5]= inputLower[1].value;
+    forScore[6]= inputLower[2].value;
+    forScore[7]= inputLower[3].value;
+console.log(forScore);
     sessionStorage.setItem('forScore',forScore);
     document.location.href = (stringUse+'html/add.html');
     score = 0;
@@ -87,7 +94,6 @@ function start(){
     seconds = 0;
     var interval = setInterval(timer, 1000);
 }
-
 
 function setOne(){
     let input = document.getElementById('inputAnswer')
@@ -226,8 +232,6 @@ function setExample(){
     let timeArrayString =[];
     timeArrayString = sessionStorage.getItem('timeArray');
     forScore = test.split(',');// 1+  2-  3x  4/
-    // console.log(`forScore - ${forScore}`);
-
 
     let inputExample = document.getElementById('example') ;
     let inputScore = document.getElementById('score') ;
@@ -237,14 +241,9 @@ function setExample(){
 
     let symbolArray = ['+', '-', '*', '/',];
     var symbol = Math.round(Math.random(0,100)*3);
-    console.log(`forScore - ${forScore}`);
     for(let i=0;i<5;){
         var symbol = Math.round(Math.random(0,100)*3);
-        console.log(`forScore[symbol] - ${forScore[symbol]}`);
-        console.log(`symbol - ${symbol}`);
-        if(forScore[symbol] == 0){
-            console.log(`symbol in - ${symbol}`);
-        }else{
+        if(forScore[symbol] == 1){
             i=10;
         }
     }
@@ -301,85 +300,138 @@ function blink(input, color){
 }
 
 
-// jQuery(document).ready(function() {
-// 	$('.upper').on('input', setFill);
-// 	$('.lower').on('input', setFill);
+jQuery(document).ready(function() {
+	$('.upper').on('input', setFill);
+	$('.lower').on('input', setFill);
 
-// 	var max = $('.upper').attr('max');
-// 	var min = $('.lower').attr('min');
+	var max = $('.upper').attr('max');
+	var min = $('.lower').attr('min');
 
-// 	function setFill(evt) {
-// 		var valUpper = $('.upper').val();
-// 		var valLower = $('.lower').val();
-// 		if (parseFloat(valLower) > parseFloat(valUpper)) {
-// 			var trade = valLower;
-// 			valLower = valUpper;
-// 			valUpper = trade;
-// 		}
+	function setFill(evt) {
+		var valUpper = $('.upper').val();
+		var valLower = $('.lower').val();
+		if (parseFloat(valLower) > parseFloat(valUpper)) {
+			var trade = valLower;
+			valLower = valUpper;
+			valUpper = trade;
+		}
 		
-// 		var width = valUpper * 100 / max;
-// 		var left = valLower * 100 / max;
-// 		$('.fill').css('left', 'calc(' + left + '%)');
-// 		$('.fill').css('width', width - left + '%');
+		var width = valUpper * 100 / max;
+		var left = valLower * 100 / max;
+		$('.fill').css('left', 'calc(' + left + '%)');
+		$('.fill').css('width', width - left + '%');
 		
-// 		// Update info
-// 		if (parseInt(valLower) == min) {
-// 			$('.easy-basket-lower').val('0');
-// 		} else {
-// 			$('.easy-basket-lower').val(parseInt(valLower));
-// 		}
-// 		if (parseInt(valUpper) == max) {
-// 			$('.easy-basket-upper').val('300');
-// 		} else {
-// 			$('.easy-basket-upper').val(parseInt(valUpper));
-// 		}
-// 		$('.histogram-list li').removeClass('ui-histogram-active');
-// 	}
+		// Update info
+		if (parseInt(valLower) == min) {
+			$('.easy-basket-lower').val('0');
+		} else {
+			$('.easy-basket-lower').val(parseInt(valLower));
+		}
+		if (parseInt(valUpper) == max) {
+			$('.easy-basket-upper').val('300');
+		} else {
+			$('.easy-basket-upper').val(parseInt(valUpper));
+		}
+		$('.histogram-list li').removeClass('ui-histogram-active');
+	}
 	
-// 	// изменяем диапазон цен вручную
-// 	$('.easy-basket-filter-info p input').keyup(function() {
-// 		var valUpper = $('.easy-basket-upper').val();
-// 		var valLower = $('.easy-basket-lower').val();
-// 		var width = valUpper * 100 / max;
-// 		var left = valLower * 100 / max;
-// 		if ( valUpper > 300 ) {
-// 			var left = max;
-// 		}
-// 		if ( valLower < 0 ) {
-// 			var left = min;
-// 		} else if ( valLower > max ) {
-// 			var left = min;
-// 		}
-// 		$('.fill').css('left', 'calc(' + left + '%)');
-// 		$('.fill').css('width', width - left + '%');
-// 		// меняем положение ползунков
-// 		$('.lower').val(valLower);
-// 		$('.upper').val(valUpper);
-// 	});
-// 	$('.easy-basket-filter-info p input').focus(function() {
-// 		$(this).val('');
-// 	});
-// 	$('.easy-basket-filter-info .iLower input').blur(function() {
-// 		var valLower = $('.lower').val();
-// 		$(this).val(Math.floor(valLower));
-// 	});
-// 	$('.easy-basket-filter-info .iUpper input').blur(function() {
-// 		var valUpper = $('.upper').val();
-// 		$(this).val(Math.floor(valUpper));
-// 	});
+	// изменяем диапазон цен вручную
+	$('.easy-basket-filter-info p input').keyup(function() {
+		var valUpper = $('.easy-basket-upper').val();
+		var valLower = $('.easy-basket-lower').val();
+		var width = valUpper * 100 / max;
+		var left = valLower * 100 / max;
+		if ( valUpper > 300 ) {
+			var left = max;
+		}
+		if ( valLower < 0 ) {
+			var left = min;
+		} else if ( valLower > max ) {
+			var left = min;
+		}
+		$('.fill').css('left', 'calc(' + left + '%)');
+		$('.fill').css('width', width - left + '%');
+		// меняем положение ползунков
+		$('.lower').val(valLower);
+		$('.upper').val(valUpper);
+	});
+	$('.easy-basket-filter-info p input').focus(function() {
+		$(this).val('');
+	});
+	$('.easy-basket-filter-info .iLower input').blur(function() {
+		var valLower = $('.lower').val();
+		$(this).val(Math.floor(valLower));
+	});
+	$('.easy-basket-filter-info .iUpper input').blur(function() {
+		var valUpper = $('.upper').val();
+		$(this).val(Math.floor(valUpper));
+	});
+});
+
+jQuery(document).ready(function() {
+	$('.upper-double').on('input', setFill);
+	$('.lower-double').on('input', setFill);
+
+	var max = $('.upper-double').attr('max');
+	var min = $('.lower-double').attr('min');
+
+	function setFill(evt) {
+		var valUpper = $('.upper-double').val();
+		var valLower = $('.lower-double').val();
+		if (parseFloat(valLower) > parseFloat(valUpper)) {
+			var trade = valLower;
+			valLower = valUpper;
+			valUpper = trade;
+		}
+		
+		var width = valUpper * 100 / max;
+		var left = valLower * 100 / max;
+		$('.fill-double').css('left', 'calc(' + left + '%)');
+		$('.fill-double').css('width', width - left + '%');
+		
+		// Update info
+		if (parseInt(valLower) == min) {
+			$('.easy-basket-lower-double').val('0');
+		} else {
+			$('.easy-basket-lower-double').val(parseInt(valLower));
+		}
+		if (parseInt(valUpper) == max) {
+			$('.easy-basket-upper-double').val('50');
+		} else {
+			$('.easy-basket-upper-double').val(parseInt(valUpper));
+		}
+		$('.histogram-list li').removeClass('ui-histogram-active');
+	}
 	
-// 	$('.histogram-list li').click(function() {
-// 		$('.histogram-list li').removeClass('ui-histogram-active');
-// 		var range_from = $(this).attr('price-range-from');
-// 		var range_to = $(this).attr('price-range-to');
-// 		var width = range_to * 100 / max;
-// 		var left = range_from * 100 / max;
-// 		$('.easy-basket-lower').val(range_from);
-// 		$('.easy-basket-upper').val(range_to);
-// 		$('.fill').css('left', 'calc(' + left + '%)');
-// 		$('.fill').css('width', width - left + '%');
-// 		$('.lower').val(range_from);
-// 		$('.upper').val(range_to);
-// 		$(this).addClass('ui-histogram-active');
-// 	});
-// });
+	// изменяем диапазон цен вручную
+	$('.easy-basket-filter-info-double p input').keyup(function() {
+		var valUpper = $('.easy-basket-upper-double').val();
+		var valLower = $('.easy-basket-lower-double').val();
+		var width = valUpper * 100 / max;
+		var left = valLower * 100 / max;
+		if ( valUpper > 50 ) {
+			var left = max;
+		}
+		if ( valLower < 0 ) {
+			var left = min;
+		} else if ( valLower > max ) {
+			var left = min;
+		}
+		$('.fill-double').css('left', 'calc(' + left + '%)');
+		$('.fill-double').css('width', width - left + '%');
+		// меняем положение ползунков
+		$('.lower-double').val(valLower);
+		$('.upper-double').val(valUpper);
+	});
+	$('.easy-basket-filter-info-double p input').focus(function() {
+		$(this).val('');
+	});
+	$('.easy-basket-filter-info-double .iLower-double input').blur(function() {
+		var valLower = $('.lower-double').val();
+		$(this).val(Math.floor(valLower));
+	});
+	$('.easy-basket-filter-info-double .iUpper-double input').blur(function() {
+		var valUpper = $('.upper-double').val();
+		$(this).val(Math.floor(valUpper));
+	});
+});
