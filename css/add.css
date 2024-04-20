@@ -132,5 +132,13 @@ input{
         width: 100%;
     }
 }
+@media (max-width: 540px) {
+    p{
+        font-size: 8vw;
+    }
+    .inputAnswer{
+        height: 35px;
+    }
+}
 
 

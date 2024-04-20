@@ -46,7 +46,7 @@ function firstTry(){
         };
 
         let inputExample = document.getElementById('message-first') ;
-        inputExample.outerHTML = `<p class="message-first"> Уровень завершен <br><br>Количество ошибок:<br>  ${mistake} <br><br> Время(секунд): <br>total - ${total}, max - ${max}, min - ${min}</p>`;
+        inputExample.outerHTML = `<p class="message-first"> Уровень завершен <br>Количество ошибок:<br>  ${mistake} <br> Время(секунд): <br>total - ${total}, max - ${max}, min - ${min}</p>`;
     }
     score = 0;
     mistake = 0;
