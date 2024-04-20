@@ -1,6 +1,5 @@
 "use strict";
 
-
 var Git ='https://sashkka1.github.io/MathScore/';
 var Home ='http://127.0.0.1:5501/MathScore/';
 var stringUse = Git;
@@ -86,7 +85,6 @@ function start(){
     forScore[5]= inputLower[1].value;
     forScore[6]= inputLower[2].value;
     forScore[7]= inputLower[3].value;
-console.log(forScore);
     sessionStorage.setItem('forScore',forScore);
     document.location.href = (stringUse+'html/add.html');
     score = 0;
@@ -231,7 +229,7 @@ function setExample(){
     let test= sessionStorage.getItem('forScore',forScore);
     let timeArrayString =[];
     timeArrayString = sessionStorage.getItem('timeArray');
-    forScore = test.split(',');// 1+  2-  3x  4/
+    forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
 
     let inputExample = document.getElementById('example') ;
     let inputScore = document.getElementById('score') ;
@@ -249,31 +247,33 @@ function setExample(){
     }
     switch(symbol){
         case 0: // '+'
-            firstNumber = Math.round(Math.random(0,100)*100);
-            lastNumber = Math.round(Math.random(0,100)*100);
+            firstNumber = randomNumber(forScore[4],forScore[5]);
+            lastNumber = randomNumber(forScore[4],forScore[5]);
             answer = firstNumber + lastNumber;
         break;
         case 1:// '-'
-            for(let i =0;i < 1;){
-                firstNumber = Math.round(Math.random(0,100)*100);
-                lastNumber = Math.round(Math.random(0,100)*100);
-                if(firstNumber <= lastNumber){
-                } else{
-                    answer = firstNumber - lastNumber;
-                    i++;
-                }
+            firstNumber = randomNumber(forScore[4],forScore[5]);
+            lastNumber = randomNumber(forScore[4],forScore[5]);
+            let a;
+            if(firstNumber <= lastNumber){
+                answer = lastNumber - firstNumber;
+                a=lastNumber;
+                lastNumber = firstNumber;
+                firstNumber = a;
+            } else{
+                answer = firstNumber - lastNumber;
             }
         break;
         case 2:// '*'
-            firstNumber = Math.round(Math.random(0,100)*20);
-            lastNumber = Math.round(Math.random(0,100)*20);
+            firstNumber = randomNumber(forScore[6],forScore[7]);
+            lastNumber = randomNumber(forScore[6],forScore[7]);
             answer = firstNumber * lastNumber;
         break;
         case 3:// '/'
             let forSort;
             for(let i =0;i < 1;){
-                firstNumber = Math.round(Math.random(0,100)*20);
-                lastNumber = Math.round(Math.random(0,100)*20);
+                firstNumber = randomNumber(forScore[6],forScore[7]);
+                lastNumber = randomNumber(forScore[6],forScore[7]);
                 if(firstNumber == lastNumber || firstNumber == 0 ||lastNumber == 0 || firstNumber == 1 ||lastNumber == 1){
                 } else{
                     forSort = firstNumber * lastNumber;
@@ -289,6 +289,17 @@ function setExample(){
     inputScore.outerHTML = `<p id="score">${score}/${countExample}</p>`;
 }
 
+function randomNumber(min, max){
+    let number;
+    for(let i = 0;i <5;){
+        number = Math.round(Math.random(0,100)*max);
+        if(number >=min){
+            i =10;
+        }
+    }
+    return number;
+}
+
 function blink(input, color){
     let inpu = document.getElementById(input) ;
     inpu.style.backgroundColor = color;
@@ -298,7 +309,6 @@ function blink(input, color){
         inpu.style.transition = "0.4s";
     }, 400);
 }
-
 
 jQuery(document).ready(function() {
 	$('.upper').on('input', setFill);
