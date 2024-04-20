@@ -15,6 +15,7 @@ window.onload = function () {
     firstTry();
 }
 
+
 function timer() {
     seconds++; 
     let input = document.getElementById('time') ;
