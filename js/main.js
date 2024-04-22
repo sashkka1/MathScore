@@ -82,7 +82,7 @@ function start(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
-    }, 400);
+    }, 200);
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     forScore = [0,0,0,0,0,0,0,0,0,];
     for(let i =0;i<=3;i++){
@@ -111,7 +111,7 @@ function setOne(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
-    }, 400);
+    }, 200);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -125,7 +125,7 @@ function setTwo(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
-    }, 400);
+    }, 200);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -139,7 +139,7 @@ function setThree(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
-    }, 400);
+    }, 200);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -153,7 +153,7 @@ function setFour(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
-    }, 400);
+    }, 200);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -167,7 +167,7 @@ function setFive(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
-    }, 400);
+    }, 200);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -181,7 +181,7 @@ function setSix(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
-    }, 400);
+    }, 200);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -195,7 +195,7 @@ function setSeven(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
-    }, 400);
+    }, 200);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -209,7 +209,7 @@ function setEight(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
-    }, 400);
+    }, 200);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -223,7 +223,7 @@ function setNine(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
-    }, 400);
+    }, 200);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -239,7 +239,7 @@ function setZero(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
-    }, 400);
+    }, 200);
     if(answer.length < 6){
         answer += 0 ;
         input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answer }</p>`;
@@ -255,7 +255,7 @@ function numberDelete(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
-    }, 400);
+    }, 200);
 };
 
 function numberEnter(button){
@@ -264,7 +264,7 @@ function numberEnter(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
-    }, 400);
+    }, 200);
     if(answerUser == answer){
         timeArray [score] = seconds;
         seconds =0;
