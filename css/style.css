@@ -70,13 +70,13 @@ button{
     display: flex;
     align-items: center;
     justify-content: center;
-    transition-duration: 0.4s;
+    transition-duration: 0.3s;
 }
 
-button:hover{
+.flash{
     background-color: rgb(23, 139, 189);
-    transition-duration: 0.4s;
 }
+
 .operatorChoice{
     display: flex;
 }

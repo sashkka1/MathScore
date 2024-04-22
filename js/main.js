@@ -24,11 +24,15 @@ function timer() {
 
 function firstTry(){
     score = sessionStorage.getItem('score');
+    let test= sessionStorage.getItem('forScore',forScore);
+    forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
     if(document.location.href == (stringUse+'html/add.html')){
         score = 0;
         setExample();
-        seconds = 0;
-        var interval = setInterval(timer, 1000);
+        if(forScore[8]==1){
+            seconds = 0;
+            var interval = setInterval(timer, 1000);
+        }
     } else if(document.location.href == (stringUse+'index.html') && score == countExample){
         mistake = sessionStorage.getItem('mistake');
         let timeArrayString =[];
@@ -47,7 +51,11 @@ function firstTry(){
         };
 
         let inputExample = document.getElementById('message-first') ;
-        inputExample.outerHTML = `<p class="message-first"> Уровень завершен <br>Количество ошибок:<br>  ${mistake} <br> Время(секунд): <br>total - ${total}, max - ${max}, min - ${min}</p>`;
+        if(forScore[8]==1){
+            inputExample.outerHTML = `<p class="message-first"> Уровень завершен <br>Количество ошибок:<br>  ${mistake} <br> Время(секунд): <br>total - ${total}, max - ${max}, min - ${min}</p>`;
+        }else{
+            inputExample.outerHTML = `<p class="message-first"> Уровень завершен <br>Количество ошибок:<br>  ${mistake} <br></p>`;
+        }
     }
     score = 0;
     mistake = 0;
@@ -70,9 +78,13 @@ function check(thisCheckbox){
     }
 }      
 
-function start(){
+function start(button){
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 400);
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    forScore = [0,0,0,0,0,0,0,0,];
+    forScore = [0,0,0,0,0,0,0,0,0,];
     for(let i =0;i<=3;i++){
         if(checkboxes[i].checked){
             forScore[i] = 1;
@@ -80,7 +92,9 @@ function start(){
             forScore[i] = 0;
         }
     }
-
+    if(checkboxes[4].checked){
+        forScore[8]=1;
+    }
     var inputLower = document.querySelectorAll('input[type="text"]');
     forScore[4]= inputLower[0].value;
     forScore[5]= inputLower[1].value;
@@ -90,11 +104,14 @@ function start(){
     document.location.href = (stringUse+'html/add.html');
     score = 0;
     setExample();
-    seconds = 0;
-    var interval = setInterval(timer, 1000);
+    seconds=0;
 }
 
-function setOne(){
+function setOne(button){
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 400);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -104,7 +121,11 @@ function setOne(){
         blink('inputAnswer','red')
     }
 };
-function setTwo(){
+function setTwo(button){
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 400);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -114,7 +135,11 @@ function setTwo(){
         blink('inputAnswer','red')
     }
 };
-function setThree(){
+function setThree(button){
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 400);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -124,7 +149,11 @@ function setThree(){
         blink('inputAnswer','red')
     }
 };
-function setFour(){
+function setFour(button){
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 400);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -134,7 +163,11 @@ function setFour(){
         blink('inputAnswer','red')
     }
 };
-function setFive(){
+function setFive(button){
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 400);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -144,7 +177,11 @@ function setFive(){
         blink('inputAnswer','red')
     }
 };
-function setSix(){
+function setSix(button){
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 400);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -154,7 +191,11 @@ function setSix(){
         blink('inputAnswer','red')
     }
 };
-function setSeven(){
+function setSeven(button){
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 400);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -164,7 +205,11 @@ function setSeven(){
         blink('inputAnswer','red')
     }
 };
-function setEight(){
+function setEight(button){
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 400);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -174,7 +219,11 @@ function setEight(){
         blink('inputAnswer','red')
     }
 };
-function setNine(){
+function setNine(button){
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 400);
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     if(answer.length < 6){
@@ -184,9 +233,13 @@ function setNine(){
         blink('inputAnswer','red')
     }
 };
-function setZero(){
+function setZero(button){
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 400);
     if(answer.length < 6){
         answer += 0 ;
         input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answer }</p>`;
@@ -194,17 +247,24 @@ function setZero(){
         blink('inputAnswer','red')
     }
 };
-function numberDelete(){
+function numberDelete(button){
     let input = document.getElementById('inputAnswer')
     let answer = input.textContent ;
     let answerNew = answer.slice(0,answer.length-1);
     input.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answerNew }</p>`;
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 400);
 };
 
-function numberEnter(){
+function numberEnter(button){
     let inputAnswerUser = document.getElementById('inputAnswer') ;
     let answerUser = inputAnswerUser.textContent;
-
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 400);
     if(answerUser == answer){
         timeArray [score] = seconds;
         seconds =0;
@@ -214,12 +274,12 @@ function numberEnter(){
             sessionStorage.setItem('score',score);
             sessionStorage.setItem('mistake',mistake);
             sessionStorage.setItem('timeArray',timeArray);
+        }else{
+            setExample();
+            let answerEmpty = '';
+            inputAnswerUser.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answerEmpty }</p>`;
+            blink('inputAnswer','green')
         }
-        
-        setExample();
-        let answerEmpty = '';
-        inputAnswerUser.outerHTML = `<p id="inputAnswer" class="inputAnswer">${ answerEmpty }</p>`;
-        blink('inputAnswer','green')
     } else{
         mistake++;
         blink('inputAnswer','red')
@@ -307,7 +367,6 @@ function blink(input, color){
     inpu.style.transition = "0.4s";
     setTimeout(function() {
         inpu.style.backgroundColor = '';
-        inpu.style.transition = "0.4s";
     }, 400);
 }
 

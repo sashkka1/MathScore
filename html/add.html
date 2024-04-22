@@ -15,7 +15,7 @@
             <a class="back-to-main" href="../index.html">
                 <img src="../materials/back-to-main.png" alt="">
             </a>
-            <p id="time">0</p>
+            <p id="time"></p>
             <div class="score">
                 <p id="score">1/10</p>
             </div>
@@ -32,40 +32,40 @@
         </div>
 
         <div class="keyboard">
-            <button  class="number one" onclick="setOne()">
+            <button  class="number" onclick="setOne(this)">
                 <p>1</p>
             </button>
-            <button  class="number one" onclick="setTwo()">
+            <button  class="number" onclick="setTwo(this)">
                 <p>2</p>
             </button>
-            <button  class="number one" onclick="setThree()">
+            <button  class="number" onclick="setThree(this)">
                 <p>3</p>
             </button>
-            <button  class="number one" onclick="setFour()">
+            <button  class="number" onclick="setFour(this)">
                 <p>4</p>
             </button>
-            <button  class="number one" onclick="setFive()">
+            <button  class="number" onclick="setFive(this)">
                 <p>5</p>
             </button>
-            <button  class="number one" onclick="setSix()">
+            <button  class="number" onclick="setSix(this)">
                 <p>6</p>
             </button>
-            <button  class="number one" onclick="setSeven()">
+            <button  class="number" onclick="setSeven(this)">
                 <p>7</p>
             </button>
-            <button  class="number one" onclick="setEight()">
+            <button  class="number" onclick="setEight(this)">
                 <p>8</p>
             </button>
-            <button  class="number one" onclick="setNine()">
+            <button  class="number" onclick="setNine(this)">
                 <p>9</p>
             </button>
-            <button class="number wrong" onclick="numberDelete()">
+            <button class="number" onclick="numberDelete(this)">
                 <img src="data:image/png;base64,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">
             </button>
-            <button  class="number zero" onclick="setZero()">
+            <button class="number" onclick="setZero(this)">
                 <p>0</p>
             </button>
-            <button class="number enter" onclick="numberEnter()">
+            <button class="number" onclick="numberEnter(this)">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC0UlEQVR4nO3cS4jNYRjH8XGpIUqywEJuC1lIIjtJUSzE0gIbl8bSwi12VgqLyUbKZWthUhQL2YhSUrKQDUKZhdsCNeGrJzN1TBbnnP/7nud53/P71DSrOed9zre5/c/7fwcGRERERERERERERERERET6CjALWGufvdfS94AlwHv+eges6vsXxRNwmn99AFYoil+QC5OCTHynLFOUOEHMG2CxosQJYl4CCxUlThDzDJinKHGCmKfAXEWJE8Q8Amb3Yk19jfaDmHvATO81V43Ogpi7wKD3uqtF50HMCDDde+1Vorsg5jowzXv91aH7IOYKMMV7hqrQLIgZ9p6hKjQPYs57z1EN0gQxp7xnqQLpgpij3vMUj7RBfgOHvGcqGmmDTETZ7z1XsUgfxPwEdnkNtBTYARwADhb4cZ88xoDtvQyxE3iSaZha/AA25w4xCFzznrQg34CNuWJMBW56T1igr8D6HEGOeE9WsI/A6pQx5gCfvacq3CiwMlWQ3d7TVCLNRjzgkvckFXkFLGoa5Lb3FJWxPV8LmgTJ9Q9UP3sBzFeQWB7YvxP6Dolln4LEMqIgsdxSkFiOKUgcr+0qiIKUfikFuOO9+sp8anSxEbjqPUFFml+OB4a8p6hEmjes7LrL+FuS0j17/bY0jtES5WyDxfS7seSbHuzuIeCx92QFyrctaPxHl91vJ+35BezNEqMlygzguN7SbWsX41DWGP/ZErQVOGH3SQAXC/x4Tj6HexajFuTZSmpOes9WJPIEOec9V7FIH0S3uAUKclk3gcYJotukAwW5oYME4gTRURuBgugwmkBBHuq4pjhBdKBZoCA68i9QEB2KGSiIjo0NFOStDlaOE2Q02W1o0jiI3VO5po2HkR4E+QKsS/ZE0iiI7Z3a0OZDSErAmUkxvgObkj6JtM9+R7RsALQY2zr4cskBWA7s0Z+2IiIiIiIiIiIiIjKQxR/cJ+YV7KzAfQAAAABJRU5ErkJggg==">
             </button>
         </div>

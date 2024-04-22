@@ -19,6 +19,7 @@
             <p><input onchange="check(this)" checked type="checkbox" value="-"> -</p>
             <p><input onchange="check(this)" checked type="checkbox" value="x"> x</p>
             <p><input onchange="check(this)" checked type="checkbox" value="/"> /</p>
+            <p><input id="checkbox" type="checkbox" value=""> Нужно ли время?</p>
         </div>
 
         <p>Значения для операторов: +, -</p>
@@ -41,13 +42,13 @@
         <p>Значения для операторов: x, /</p>
         <div class="easy-basket-filter-double">
             <div class="easy-basket-filter-info-double">
-                <p class="iLower-double"><input disabled type="text" class="easy-basket-lower-double" value="0" min="5" max="45" maxlength=2/></p>
-                <p class="iUpper-double"><input disabled type="text" class="easy-basket-upper-double" value="20" min="5" max="50" maxlength=2/></p>
+                <p class="iLower-double"><input disabled type="text" class="easy-basket-lower-double" value="0" min="2" max="48" maxlength=2/></p>
+                <p class="iUpper-double"><input disabled type="text" class="easy-basket-upper-double" value="20" min="2" max="50" maxlength=2/></p>
             </div>
             
             <div class="easy-basket-filter-range-double">
-                <input type="range" class="lower-double range-double" step="1" min="5" max="45" value="0"/>
-                <input type="range" class="upper-double range-double" step="1" min="5" max="50" value="20"/>
+                <input type="range" class="lower-double range-double" step="1" min="2" max="48" value="0"/>
+                <input type="range" class="upper-double range-double" step="1" min="2" max="50" value="20"/>
                 <div class="fill-double"></div>
             </div>
             
@@ -58,7 +59,7 @@
 
 
         <a>
-            <button onclick="start()">Начать</button>
+            <button onclick="start(this)">Начать</button>
         </a>
     </div>
 

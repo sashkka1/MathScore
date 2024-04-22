@@ -95,13 +95,6 @@ input{
     height: 4.5vh;
 }
 
-.keyboard a{
-    height: 10px;
-    width: 10px;
-    background-color: black;
-}
-
-
 @media (min-width: 992px) {
     p{
         font-size: 3vw;
