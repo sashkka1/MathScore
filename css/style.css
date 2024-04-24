@@ -21,6 +21,7 @@ nav, footer,header, aside{display: block;}
 /* просто делаем теги блочными */
 
 html,body{
+    touch-action: none;
     height: 100%;
     width: 100%;
     font-size: 100%;
