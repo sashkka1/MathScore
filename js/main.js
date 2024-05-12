@@ -28,7 +28,7 @@ window.onload = function () {
     }
     var width = valUpper * 100 / max;
     var left = valLower * 100 / max;
-    // console.log(`width - ${width}, left - ${left}, valLower - ${forMemery[0]}, valUpper - ${forMemery[1]}`);
+    console.log(`width - ${width}, left - ${left}, valLower - ${forMemery[0]}, valUpper - ${forMemery[1]}`);
     $('.fill').css('left', 'calc(' + left + '%)');
     $('.fill').css('width', width - left + '%');
     
@@ -82,7 +82,7 @@ window.onload = function () {
     }
     width = valUpper * 100 / max;
     left = valLower * 100 / max;
-    // console.log(`width - ${width}, left - ${left}, lower-double - ${forMemery[2]}, upper-double - ${forMemery[3]}`);
+    console.log(`width - ${width}, left - ${left}, lower-double - ${forMemery[2]}, upper-double - ${forMemery[3]}`);
     $('.fill-double').css('left', 'calc(' + left + '%)');
     $('.fill-double').css('width', width - left + '%');
     
