@@ -10,8 +10,122 @@ var countExample = 10;
 var seconds = 0;
 var timeArray = [0, 0, 0, 0,0,0,0,0,0,0,];
 var forScore = [0,0,0,0,];
+var forMemery = [0,100,0,20,];
 
 window.onload = function () {
+    let test = localStorage.getItem('forMemery',forMemery);
+    forMemery = test.split(',');// 1valLower  2valUpper  3lower-double  4upper-double 
+
+    var max = $('.upper').attr('max');
+	var min = $('.lower').attr('min');
+    var valLower = forMemery[0];
+    var valUpper = forMemery[1];
+
+    if (parseFloat(valLower) > parseFloat(valUpper)) {
+        var trade = valLower;
+        valLower = valUpper;
+        valUpper = trade;
+    }
+    var width = valUpper * 100 / max;
+    var left = valLower * 100 / max;
+    // console.log(`width - ${width}, left - ${left}, valLower - ${forMemery[0]}, valUpper - ${forMemery[1]}`);
+    $('.fill').css('left', 'calc(' + left + '%)');
+    $('.fill').css('width', width - left + '%');
+    
+    // Update info
+    if (parseInt(valLower) == min) {
+        $('.easy-basket-lower').val('0');
+    } else {
+        $('.easy-basket-lower').val(parseInt(valLower));
+    }
+    if (parseInt(valUpper) == max) {
+        $('.easy-basket-upper').val('300');
+    } else {
+        $('.easy-basket-upper').val(parseInt(valUpper));
+    }
+
+    // изменяем диапазон цен вручную
+    if ( valUpper > 300 ) {
+        var left = max;
+    }
+    if ( valLower < 0 ) {
+        var left = min;
+    } else if ( valLower > max ) {
+        var left = min;
+    }
+    // меняем положение ползунков
+    $('.lower').val(valLower);
+    $('.upper').val(valUpper);  
+	$('.easy-basket-filter-info p input').focus(function() {
+		$(this).val('');
+	});
+	$('.easy-basket-filter-info .iLower input').blur(function() {
+		var valLower = $('.lower').val();
+		$(this).val(Math.floor(valLower));
+	});
+	$('.easy-basket-filter-info .iUpper input').blur(function() {
+		var valUpper = $('.upper').val();
+		$(this).val(Math.floor(valUpper));
+	});
+
+
+
+
+    max = $('.upper-double').attr('max');
+    min = $('.lower-double').attr('min');
+    valLower = forMemery[2];
+    valUpper = forMemery[3];
+    if (parseFloat(valLower) > parseFloat(valUpper)) {
+        var trade = valLower;
+        valLower = valUpper;
+        valUpper = trade;
+    }
+    width = valUpper * 100 / max;
+    left = valLower * 100 / max;
+    // console.log(`width - ${width}, left - ${left}, lower-double - ${forMemery[2]}, upper-double - ${forMemery[3]}`);
+    $('.fill-double').css('left', 'calc(' + left + '%)');
+    $('.fill-double').css('width', width - left + '%');
+    
+    // Update info
+    if (parseInt(valLower) == min) {
+        $('.easy-basket-lower-double').val('0');
+    } else {
+        $('.easy-basket-lower-double').val(parseInt(valLower));
+    }
+    if (parseInt(valUpper) == max) {
+        $('.easy-basket-upper-double').val('50');
+    } else {
+        $('.easy-basket-upper-double').val(parseInt(valUpper));
+    }
+
+
+    if ( valUpper > 50 ) {
+        var left = max;
+    }
+    if ( valLower < 0 ) {
+        var left = min;
+    } else if ( valLower > max ) {
+        var left = min;
+    }
+    $('.fill-double').css('left', 'calc(' + left + '%)');
+    $('.fill-double').css('width', width - left + '%');
+    // меняем положение ползунков
+    $('.lower-double').val(valLower);
+    $('.upper-double').val(valUpper);
+    $('.easy-basket-filter-info-double p input').focus(function() {
+        $(this).val('');
+    });
+    $('.easy-basket-filter-info-double .iLower-double input').blur(function() {
+        var valLower = $('.lower-double').val();
+        $(this).val(Math.floor(valLower));
+    });
+    $('.easy-basket-filter-info-double .iUpper-double input').blur(function() {
+        var valUpper = $('.upper-double').val();
+        $(this).val(Math.floor(valUpper));
+    });
+    
+
+
     firstTry();
 }
 
@@ -56,6 +170,7 @@ function firstTry(){
         }else{
             inputExample.outerHTML = `<p class="message-first"> Уровень завершен <br>Количество ошибок:<br>  ${mistake} <br></p>`;
         }
+
     }
     score = 0;
     mistake = 0;
@@ -101,6 +216,13 @@ function start(button){
     forScore[6]= inputLower[2].value;
     forScore[7]= inputLower[3].value;
     sessionStorage.setItem('forScore',forScore);
+
+    forMemery[0]= $('.lower').val();
+    forMemery[1]= $('.upper').val();
+    forMemery[2]= $('.lower-double').val();
+    forMemery[3]= $('.upper-double').val();
+    localStorage.setItem('forMemery',forMemery);
+
     document.location.href = (stringUse+'html/add.html');
     score = 0;
     setExample();
@@ -380,6 +502,7 @@ jQuery(document).ready(function() {
 	function setFill(evt) {
 		var valUpper = $('.upper').val();
 		var valLower = $('.lower').val();
+
 		if (parseFloat(valLower) > parseFloat(valUpper)) {
 			var trade = valLower;
 			valLower = valUpper;
@@ -423,7 +546,7 @@ jQuery(document).ready(function() {
 		$('.fill').css('width', width - left + '%');
 		// меняем положение ползунков
 		$('.lower').val(valLower);
-		$('.upper').val(valUpper);
+		$('.upper').val(valUpper);  
 	});
 	$('.easy-basket-filter-info p input').focus(function() {
 		$(this).val('');
