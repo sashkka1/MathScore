@@ -124,13 +124,17 @@ window.onload = function () {
         $(this).val(Math.floor(valUpper));
     });
     
-
+    forScore[0] = 1;
+    forScore[1] = 1;
+    forScore[2] = 1;
+    forScore[3] = 1;
     test = localStorage.getItem('forScore',forScore);
-    console.log(test);
+    console.log(`test1  ${test}`);
     forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
-    console.log(test);
-    if(test == null){
-        console.log('in');
+    console.log(`test2  ${test}`);
+    let a = null;
+    if(test == a){
+        console.log(`test3  ${test}`);
         forScore[0] = 1;
         forScore[1] = 1;
         forScore[2] = 1;
