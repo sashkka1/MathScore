@@ -9,7 +9,7 @@ var mistake = 0;
 var countExample = 10;
 var seconds = 0;
 var timeArray = [0, 0, 0, 0,0,0,0,0,0,0,];
-var forScore = [1,1,1,1,];
+var forScore = [0,0,0,0,];
 var forMemery = [0,100,0,20,];
 
 window.onload = function () {
@@ -125,9 +125,13 @@ window.onload = function () {
     });
     
 
-    test = sessionStorage.getItem('forScore',forScore);
+    test = localStorage.getItem('forScore',forScore);
+    console.log(test);
     forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
-
+    console.log(forScore);
+    if(forScore[0] == forScore[1] == forScore[2]== forScore[3] ==0){
+        forScore[0] =1;
+    }
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     forScore[4] =forScore[8];
     console.log(`forScore[4]${forScore[4]},  forScore[8] ${forScore[8]}`);
@@ -137,7 +141,7 @@ window.onload = function () {
         }
     }
     localStorage.setItem('forScore',forScore);
-
+    sessionStorage
     firstTry();
 }
 
