@@ -127,6 +127,7 @@ window.onload = function () {
 
     test = localStorage.getItem('forScore',forScore);
     forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
+    console.log(test);
     if(test == null){
         console.log('in');
         forScore[0] = 1;
