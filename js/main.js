@@ -232,6 +232,7 @@ function start(button){
     forScore[6]= inputLower[2].value;
     forScore[7]= inputLower[3].value;
     sessionStorage.setItem('forScore',forScore);
+    localStorage.setItem('forScore',forScore);
 
     forMemery[0]= $('.lower').val();
     forMemery[1]= $('.upper').val();
