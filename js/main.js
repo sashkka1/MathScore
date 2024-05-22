@@ -133,8 +133,16 @@ window.onload = function () {
     forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
     console.log(`test2  ${test}`);
     let a = null;
+    let b = 'null';
     if(test == a){
         console.log(`test3  ${test}`);
+        forScore[0] = 1;
+        forScore[1] = 1;
+        forScore[2] = 1;
+        forScore[3] = 1;
+    }
+    if(test == b){
+        console.log(`test4  ${test}`);
         forScore[0] = 1;
         forScore[1] = 1;
         forScore[2] = 1;
