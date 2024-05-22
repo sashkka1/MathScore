@@ -126,10 +126,8 @@ window.onload = function () {
     
 
     test = localStorage.getItem('forScore',forScore);
-    console.log(`test2 ${test}`);
     forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
-    console.log(forScore);
-    if(forScore[0] == forScore[1] && forScore[0] == forScore[2] && forScore[0] == forScore[3] && forScore[0] == 0){
+    if(test==null){
         forScore[0] = 1;
         forScore[1] = 1;
         forScore[2] = 1;
@@ -144,7 +142,9 @@ window.onload = function () {
         }
     }
     localStorage.setItem('forScore',forScore);
-    sessionStorage
+    sessionStorage.setItem('forScore',forScore);
+
+    
     firstTry();
 }
 
