@@ -127,7 +127,8 @@ window.onload = function () {
 
     test = localStorage.getItem('forScore',forScore);
     forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
-    if(test==null){
+    if(test == null){
+        console.log('in');
         forScore[0] = 1;
         forScore[1] = 1;
         forScore[2] = 1;
@@ -135,7 +136,7 @@ window.onload = function () {
     }
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     forScore[4] =forScore[8];
-    console.log(`forScore[4]${forScore[4]},  forScore[8] ${forScore[8]}`);
+    console.log(`forScore[4]${forScore[3]}`);
     for(let i =0;i<=5;i++){
         if(forScore[i]==1){
             checkboxes[i].checked = true;
@@ -144,7 +145,7 @@ window.onload = function () {
     localStorage.setItem('forScore',forScore);
     sessionStorage.setItem('forScore',forScore);
 
-    
+
     firstTry();
 }
 
