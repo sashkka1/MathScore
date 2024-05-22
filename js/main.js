@@ -124,32 +124,23 @@ window.onload = function () {
         $(this).val(Math.floor(valUpper));
     });
     
-    forScore[0] = 1;
-    forScore[1] = 1;
-    forScore[2] = 1;
-    forScore[3] = 1;
+    // forScore[0] = 1;
+    // forScore[1] = 1;
+    // forScore[2] = 1;
+    // forScore[3] = 1;
     test = localStorage.getItem('forScore',forScore);
-    console.log(`test1  ${test}`);  
     let a = null;
-    let b = 'null';
-    if(test == a){
-        console.log(`test3  ${test}`);
-        forScore[0] = 1;
-        forScore[1] = 1;
-        forScore[2] = 1;
-        forScore[3] = 1;
-    }
-    if(test == b){
-        console.log(`test4  ${test}`);
-        forScore[0] = 1;
-        forScore[1] = 1;
-        forScore[2] = 1;
-        forScore[3] = 1;
-    }
-    console.log(`test2  ${test}`);
-    forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    forScore[4] =forScore[8];
+    if(test == a){
+        forScore[0] = 1;
+        forScore[1] = 1;
+        forScore[2] = 1;
+        forScore[3] = 1;
+    }else{
+        forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
+        forScore[4] =forScore[8];
+    }
+
     for(let i =0;i<=5;i++){
         if(forScore[i]==1){
             checkboxes[i].checked = true;
