@@ -137,7 +137,6 @@ window.onload = function () {
             forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
             forScore[4] =forScore[8];
         }
-        console.log(forScore);
         for(let i =0;i<=5;i++){    
             if(forScore[i]==1){
                 checkboxes[i].checked = true;
