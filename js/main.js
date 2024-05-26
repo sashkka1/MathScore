@@ -9,10 +9,38 @@ var mistake = 0;
 var countExample = 10;
 var seconds = 0;
 var timeArray = [0, 0, 0, 0,0,0,0,0,0,0,];
-var forScore = [1,1,1,1,];
+var forScore = [0,0,0,0,];
 var forMemery = [0,100,0,20,];
 
 window.onload = function () {
+    if(document.location.href == stringUse+'index.html'){
+        let test = localStorage.getItem('forScore',forScore);
+        let a = null;
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        if(forScore[0] == 1 || forScore[1] == 1 || forScore[2] == 1 || forScore[3] == 1){
+            forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
+            forScore[4] =forScore[8];
+            dinamicRange()
+        }else{
+            forScore[0] = 1;
+            forScore[1] = 1;
+            forScore[2] = 1;
+            forScore[3] = 1;
+        }
+        for(let i =0;i<=5;i++){    
+            if(forScore[i]==1){
+                checkboxes[i].checked = true;
+            }
+        }
+        localStorage.setItem('forScore',forScore);
+        sessionStorage.setItem('forScore',forScore);
+    }
+
+
+    firstTry();
+}
+
+function dinamicRange(){
     let test = localStorage.getItem('forMemery',forMemery);
     forMemery = test.split(',');// 1valLower  2valUpper  3lower-double  4upper-double 
 
@@ -123,31 +151,6 @@ window.onload = function () {
         var valUpper = $('.upper-double').val();
         $(this).val(Math.floor(valUpper));
     });
-    
-    if(document.location.href == stringUse+'index.html'){
-        test = localStorage.getItem('forScore',forScore);
-        let a = null;
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        if(test == a || (forScore[0] == 0 && forScore[1] == 0 && forScore[2] == 0 && forScore[3] == 0)){
-            forScore[0] = 1;
-            forScore[1] = 1;
-            forScore[2] = 1;
-            forScore[3] = 1;
-        }else{
-            forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
-            forScore[4] =forScore[8];
-        }
-        for(let i =0;i<=5;i++){    
-            if(forScore[i]==1){
-                checkboxes[i].checked = true;
-            }
-        }
-        localStorage.setItem('forScore',forScore);
-        sessionStorage.setItem('forScore',forScore);
-    }
-
-
-    firstTry();
 }
 
 
