@@ -257,6 +257,11 @@ function start(button){
         forScore[8]=1;
     }
     var inputLower = document.querySelectorAll('input[type="text"]');
+    forScore[0]= 1;
+    forScore[1]= 1;
+    forScore[2]= 1;
+    forScore[3]= 1;
+    forScore[8]= 0;
     forScore[4]= inputLower[0].value;
     forScore[5]= inputLower[1].value;
     forScore[6]= inputLower[2].value;
@@ -281,10 +286,6 @@ function start_small(button){
     }, 200);
 
     forScore = [0,0,0,0,0,0,0,0,0,];
-    forScore[0]= 1;
-    forScore[1]= 1;
-    forScore[2]= 1;
-    forScore[3]= 1;
     forScore[4]= 2;
     forScore[5]= 20;
     forScore[6]= 2;
