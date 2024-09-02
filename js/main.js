@@ -27,27 +27,31 @@ window.onload = function () {
         //     forScore[2] = 1;
         //     forScore[3] = 1;
         // }
-            console.log('1');
+            // console.log('1');
         if (test === null || test === undefined || test === '') {
             forScore[0] = 1;
             forScore[1] = 1;
             forScore[2] = 1;
             forScore[3] = 1;
-            console.log('2');
+            // console.log('2');
         } else {
-            console.log('3');
+            // console.log('3');
             forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
+            forScore[0] = 1;
+            forScore[1] = 1;
+            forScore[2] = 1;
+            forScore[3] = 1;
             forScore[4] = forScore[8];
             dinamicRange()
         }
-        console.log('4');
+        // console.log('4');
         for(let i =0;i<=5;i++){    
             if(forScore[i]==1){
                 checkboxes[i].checked = true;
-                console.log('5');
+                // console.log('5');
             }
         }
-        console.log('6');
+        // console.log('6');
         localStorage.setItem('forScore',forScore);
         sessionStorage.setItem('forScore',forScore);
     }
@@ -57,10 +61,10 @@ window.onload = function () {
 }
 
 function dinamicRange(){
-    console.log('7');
+    // console.log('7');
     let test = localStorage.getItem('forMemery',forMemery);
     forMemery = test.split(',');// 1valLower  2valUpper  3lower-double  4upper-double 
-    console.log('8');
+    // console.log('8');
     var max = $('.upper').attr('max');
 	var min = $('.lower').attr('min');
     var valLower = forMemery[0];
@@ -168,7 +172,7 @@ function dinamicRange(){
         var valUpper = $('.upper-double').val();
         $(this).val(Math.floor(valUpper));
     });
-    console.log('9');
+    // console.log('9');
 }
 
 
@@ -270,6 +274,66 @@ function start(button){
     setExample();
     seconds=0;
 }
+function start_small(button){
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 200);
+
+    forScore = [0,0,0,0,0,0,0,0,0,];
+    forScore[0]= 1;
+    forScore[1]= 1;
+    forScore[2]= 1;
+    forScore[3]= 1;
+    forScore[4]= 2;
+    forScore[5]= 20;
+    forScore[6]= 2;
+    forScore[7]= 10;
+    forScore[8]= 1;
+    sessionStorage.setItem('forScore',forScore);
+    localStorage.setItem('forScore',forScore);
+
+    forMemery[0]= $('.lower').val();
+    forMemery[1]= $('.upper').val();
+    forMemery[2]= $('.lower-double').val();
+    forMemery[3]= $('.upper-double').val();
+    localStorage.setItem('forMemery',forMemery);
+    document.location.href = (stringUse+'html/add.html');
+    score = 0;
+    setExample();
+    seconds=0;
+}
+
+function start_big(button){
+    button.classList.add('flash');
+    setTimeout(function() {
+        button.classList.remove('flash');
+    }, 200);
+
+    forScore = [0,0,0,0,0,0,0,0,0,];
+    forScore[0]= 1;
+    forScore[1]= 1;
+    forScore[2]= 1;
+    forScore[3]= 1;
+    forScore[4]= 150;
+    forScore[5]= 300;
+    forScore[6]= 25;
+    forScore[7]= 50;
+    forScore[8]= 0;
+    sessionStorage.setItem('forScore',forScore);
+    localStorage.setItem('forScore',forScore);
+
+    forMemery[0]= $('.lower').val();
+    forMemery[1]= $('.upper').val();
+    forMemery[2]= $('.lower-double').val();
+    forMemery[3]= $('.upper-double').val();
+    localStorage.setItem('forMemery',forMemery);
+    document.location.href = (stringUse+'html/add.html');
+    score = 0;
+    setExample();
+    seconds=0;
+}
+
 
 function setOne(button){
     button.classList.add('flash');
@@ -426,6 +490,7 @@ function numberEnter(button){
     let inputAnswerUser = document.getElementById('inputAnswer') ;
     let answerUser = inputAnswerUser.textContent;
     button.classList.add('flash');
+
     setTimeout(function() {
         button.classList.remove('flash');
     }, 200);
@@ -451,7 +516,7 @@ function numberEnter(button){
 };
 
 function setExample(){
-    let test= sessionStorage.getItem('forScore',forScore);
+    let test = sessionStorage.getItem('forScore',forScore);
     let timeArrayString =[];
     timeArrayString = sessionStorage.getItem('timeArray');
     forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
@@ -480,12 +545,15 @@ function setExample(){
             firstNumber = randomNumber(forScore[4],forScore[5]);
             lastNumber = randomNumber(forScore[4],forScore[5]);
             let a;
-            if(firstNumber <= lastNumber){
+            if(firstNumber < lastNumber){
                 answer = lastNumber - firstNumber;
                 a=lastNumber;
                 lastNumber = firstNumber;
                 firstNumber = a;
-            } else{
+            } else if(firstNumber = lastNumber){
+                firstNumber = firstNumber + 1;
+                answer = firstNumber - lastNumber;
+            } else {
                 answer = firstNumber - lastNumber;
             }
         break;

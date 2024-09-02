@@ -73,6 +73,23 @@ button{
     justify-content: center;
     transition-duration: 0.2s;
 }
+.div-small-big{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+.small-big{
+    height: 100%;
+    width: 10%;
+    border-radius: 5px;
+    box-shadow: 0px 1px 4px  rgb(92, 92, 92);
+    background-color: rgb(28, 170, 231);
+    color: white;
+    font-size: 2.5vw;
+    font-family: Arial, Helvetica, sans-serif;
+    transition-duration: 0.2s;
+}
 
 .flash{
     background-color: rgb(23, 139, 189);
