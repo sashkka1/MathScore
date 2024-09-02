@@ -286,6 +286,10 @@ function start_small(button){
     }, 200);
 
     forScore = [0,0,0,0,0,0,0,0,0,];
+    forScore[0]= 1;
+    forScore[1]= 1;
+    forScore[2]= 1;
+    forScore[3]= 1;
     forScore[4]= 2;
     forScore[5]= 20;
     forScore[6]= 2;
