@@ -11,12 +11,19 @@ var seconds = 0;
 var timeArray = [0, 0, 0, 0,0,0,0,0,0,0,];
 var forScore = [1,1,1,1,];
 var forMemery = [0,100,0,20,];
+var forMistake = [];
 
 window.onload = function () {
     if(document.location.href == stringUse+'index.html'){
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        for(let i =0;i<=3;i++){    
+            if(forScore[i]==1){
+                checkboxes[i].checked = true;
+                // console.log('5');
+            }
+        }
         let test = localStorage.getItem('forScore',forScore);
         let a = null;
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         // if(forScore[0] == 1 || forScore[1] == 1 || forScore[2] == 1 || forScore[3] == 1){
         //     forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
         //     forScore[4] = forScore[8];
@@ -43,13 +50,6 @@ window.onload = function () {
             forScore[3] = 1;
             forScore[4] = forScore[8];
             dinamicRange()
-        }
-        // console.log('4');
-        for(let i =0;i<=5;i++){    
-            if(forScore[i]==1){
-                checkboxes[i].checked = true;
-                // console.log('5');
-            }
         }
         // console.log('6');
         localStorage.setItem('forScore',forScore);
@@ -257,11 +257,6 @@ function start(button){
         forScore[8]=1;
     }
     var inputLower = document.querySelectorAll('input[type="text"]');
-    forScore[0]= 1;
-    forScore[1]= 1;
-    forScore[2]= 1;
-    forScore[3]= 1;
-    forScore[8]= 0;
     forScore[4]= inputLower[0].value;
     forScore[5]= inputLower[1].value;
     forScore[6]= inputLower[2].value;
@@ -279,34 +274,142 @@ function start(button){
     setExample();
     seconds=0;
 }
+
 function start_small(button){
     button.classList.add('flash');
     setTimeout(function() {
         button.classList.remove('flash');
     }, 200);
 
-    forScore = [0,0,0,0,0,0,0,0,0,];
-    forScore[0]= 1;
-    forScore[1]= 1;
-    forScore[2]= 1;
-    forScore[3]= 1;
-    forScore[4]= 2;
-    forScore[5]= 20;
-    forScore[6]= 2;
-    forScore[7]= 10;
-    forScore[8]= 1;
-    sessionStorage.setItem('forScore',forScore);
-    localStorage.setItem('forScore',forScore);
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for(let i =0;i<=4;i++){    
+        checkboxes[i].checked = false;
+    }
+    for(let i =0;i<=4;i++){    
+        checkboxes[i].checked = true;
+    }
 
-    forMemery[0]= $('.lower').val();
-    forMemery[1]= $('.upper').val();
-    forMemery[2]= $('.lower-double').val();
-    forMemery[3]= $('.upper-double').val();
-    localStorage.setItem('forMemery',forMemery);
-    document.location.href = (stringUse+'html/add.html');
-    score = 0;
-    setExample();
-    seconds=0;
+
+
+
+
+
+    // console.log('7');
+    let test = localStorage.getItem('forMemery',forMemery);
+    forMemery = test.split(',');// 1valLower  2valUpper  3lower-double  4upper-double 
+    // console.log('8');
+    var max = $('.upper').attr('max');
+    var min = $('.lower').attr('min');
+    var valLower = 2;
+    var valUpper = 20;
+
+    if (parseFloat(valLower) > parseFloat(valUpper)) {
+        var trade = valLower;
+        valLower = valUpper;
+        valUpper = trade;
+    }
+    var width = valUpper * 100 / max;
+    var left = valLower * 100 / max;
+    console.log(`width - ${width}, left - ${left}, valLower - ${forMemery[0]}, valUpper - ${forMemery[1]}`);
+    $('.fill').css('left', 'calc(' + left + '%)');
+    $('.fill').css('width', width - left + '%');
+
+    // Update info
+    if (parseInt(valLower) == min) {
+        $('.easy-basket-lower').val('0');
+    } else {
+        $('.easy-basket-lower').val(parseInt(valLower));
+    }
+    if (parseInt(valUpper) == max) {
+        $('.easy-basket-upper').val('300');
+    } else {
+        $('.easy-basket-upper').val(parseInt(valUpper));
+    }
+
+    // изменяем диапазон цен вручную
+    if ( valUpper > 300 ) {
+        var left = max;
+    }
+    if ( valLower < 0 ) {
+        var left = min;
+    } else if ( valLower > max ) {
+        var left = min;
+    }
+    // меняем положение ползунков
+    $('.lower').val(valLower);
+    $('.upper').val(valUpper);  
+    $('.easy-basket-filter-info p input').focus(function() {
+        $(this).val('');
+    });
+    $('.easy-basket-filter-info .iLower input').blur(function() {
+        var valLower = $('.lower').val();
+        $(this).val(Math.floor(valLower));
+    });
+    $('.easy-basket-filter-info .iUpper input').blur(function() {
+        var valUpper = $('.upper').val();
+        $(this).val(Math.floor(valUpper));
+    });
+
+
+
+    max = $('.upper-double').attr('max');
+        min = $('.lower-double').attr('min');
+        valLower = 2;
+        valUpper = 10;
+        if (parseFloat(valLower) > parseFloat(valUpper)) {
+            var trade = valLower;
+            valLower = valUpper;
+            valUpper = trade;
+        }
+        width = valUpper * 100 / max;
+        left = valLower * 100 / max;
+        console.log(`width - ${width}, left - ${left}, lower-double - ${forMemery[2]}, upper-double - ${forMemery[3]}`);
+        $('.fill-double').css('left', 'calc(' + left + '%)');
+        $('.fill-double').css('width', width - left + '%');
+        
+        // Update info
+        if (parseInt(valLower) == min) {
+            $('.easy-basket-lower-double').val('0');
+        } else {
+            $('.easy-basket-lower-double').val(parseInt(valLower));
+        }
+        if (parseInt(valUpper) == max) {
+            $('.easy-basket-upper-double').val('50');
+        } else {
+            $('.easy-basket-upper-double').val(parseInt(valUpper));
+        }
+
+
+        if ( valUpper > 50 ) {
+            var left = max;
+        }
+        if ( valLower < 0 ) {
+            var left = min;
+        } else if ( valLower > max ) {
+            var left = min;
+        }
+        $('.fill-double').css('left', 'calc(' + left + '%)');
+        $('.fill-double').css('width', width - left + '%');
+        // меняем положение ползунков
+        $('.lower-double').val(valLower);
+        $('.upper-double').val(valUpper);
+        $('.easy-basket-filter-info-double p input').focus(function() {
+            $(this).val('');
+        });
+        $('.easy-basket-filter-info-double .iLower-double input').blur(function() {
+            var valLower = $('.lower-double').val();
+            $(this).val(Math.floor(valLower));
+        });
+        $('.easy-basket-filter-info-double .iUpper-double input').blur(function() {
+            var valUpper = $('.upper-double').val();
+            $(this).val(Math.floor(valUpper));
+        });
+
+
+
+
+
+
 }
 
 function start_big(button){
@@ -315,28 +418,123 @@ function start_big(button){
         button.classList.remove('flash');
     }, 200);
 
-    forScore = [0,0,0,0,0,0,0,0,0,];
-    forScore[0]= 1;
-    forScore[1]= 1;
-    forScore[2]= 1;
-    forScore[3]= 1;
-    forScore[4]= 150;
-    forScore[5]= 300;
-    forScore[6]= 25;
-    forScore[7]= 50;
-    forScore[8]= 0;
-    sessionStorage.setItem('forScore',forScore);
-    localStorage.setItem('forScore',forScore);
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for(let i =0;i<=4;i++){    
+        checkboxes[i].checked = false;
+    }
+    for(let i =0;i<=3;i++){    
+        checkboxes[i].checked = true;
+    }
+    // console.log('7');
+let test = localStorage.getItem('forMemery',forMemery);
+forMemery = test.split(',');// 1valLower  2valUpper  3lower-double  4upper-double 
+// console.log('8');
+var max = $('.upper').attr('max');
+var min = $('.lower').attr('min');
+var valLower = 150;
+var valUpper = 300;
 
-    forMemery[0]= $('.lower').val();
-    forMemery[1]= $('.upper').val();
-    forMemery[2]= $('.lower-double').val();
-    forMemery[3]= $('.upper-double').val();
-    localStorage.setItem('forMemery',forMemery);
-    document.location.href = (stringUse+'html/add.html');
-    score = 0;
-    setExample();
-    seconds=0;
+if (parseFloat(valLower) > parseFloat(valUpper)) {
+    var trade = valLower;
+    valLower = valUpper;
+    valUpper = trade;
+}
+var width = valUpper * 100 / max;
+var left = valLower * 100 / max;
+console.log(`width - ${width}, left - ${left}, valLower - ${forMemery[0]}, valUpper - ${forMemery[1]}`);
+$('.fill').css('left', 'calc(' + left + '%)');
+$('.fill').css('width', width - left + '%');
+
+// Update info
+if (parseInt(valLower) == min) {
+    $('.easy-basket-lower').val('0');
+} else {
+    $('.easy-basket-lower').val(parseInt(valLower));
+}
+if (parseInt(valUpper) == max) {
+    $('.easy-basket-upper').val('300');
+} else {
+    $('.easy-basket-upper').val(parseInt(valUpper));
+}
+
+// изменяем диапазон цен вручную
+if ( valUpper > 300 ) {
+    var left = max;
+}
+if ( valLower < 0 ) {
+    var left = min;
+} else if ( valLower > max ) {
+    var left = min;
+}
+// меняем положение ползунков
+$('.lower').val(valLower);
+$('.upper').val(valUpper);  
+$('.easy-basket-filter-info p input').focus(function() {
+    $(this).val('');
+});
+$('.easy-basket-filter-info .iLower input').blur(function() {
+    var valLower = $('.lower').val();
+    $(this).val(Math.floor(valLower));
+});
+$('.easy-basket-filter-info .iUpper input').blur(function() {
+    var valUpper = $('.upper').val();
+    $(this).val(Math.floor(valUpper));
+});
+
+
+
+max = $('.upper-double').attr('max');
+    min = $('.lower-double').attr('min');
+    valLower = 25;
+    valUpper = 50;
+    if (parseFloat(valLower) > parseFloat(valUpper)) {
+        var trade = valLower;
+        valLower = valUpper;
+        valUpper = trade;
+    }
+    width = valUpper * 100 / max;
+    left = valLower * 100 / max;
+    console.log(`width - ${width}, left - ${left}, lower-double - ${forMemery[2]}, upper-double - ${forMemery[3]}`);
+    $('.fill-double').css('left', 'calc(' + left + '%)');
+    $('.fill-double').css('width', width - left + '%');
+    
+    // Update info
+    if (parseInt(valLower) == min) {
+        $('.easy-basket-lower-double').val('0');
+    } else {
+        $('.easy-basket-lower-double').val(parseInt(valLower));
+    }
+    if (parseInt(valUpper) == max) {
+        $('.easy-basket-upper-double').val('50');
+    } else {
+        $('.easy-basket-upper-double').val(parseInt(valUpper));
+    }
+
+
+    if ( valUpper > 50 ) {
+        var left = max;
+    }
+    if ( valLower < 0 ) {
+        var left = min;
+    } else if ( valLower > max ) {
+        var left = min;
+    }
+    $('.fill-double').css('left', 'calc(' + left + '%)');
+    $('.fill-double').css('width', width - left + '%');
+    // меняем положение ползунков
+    $('.lower-double').val(valLower);
+    $('.upper-double').val(valUpper);
+    $('.easy-basket-filter-info-double p input').focus(function() {
+        $(this).val('');
+    });
+    $('.easy-basket-filter-info-double .iLower-double input').blur(function() {
+        var valLower = $('.lower-double').val();
+        $(this).val(Math.floor(valLower));
+    });
+    $('.easy-basket-filter-info-double .iUpper-double input').blur(function() {
+        var valUpper = $('.upper-double').val();
+        $(this).val(Math.floor(valUpper));
+    });
 }
 
 
@@ -526,8 +724,8 @@ function setExample(){
     timeArrayString = sessionStorage.getItem('timeArray');
     forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
 
-    let inputExample = document.getElementById('example') ;
-    let inputScore = document.getElementById('score') ;
+    let inputExample = document.getElementById('example');
+    let inputScore = document.getElementById('score');
 
     let firstNumber = 0;
     let lastNumber = 0;
@@ -540,51 +738,94 @@ function setExample(){
             i=10;
         }
     }
-    switch(symbol){
-        case 0: // '+'
-            firstNumber = randomNumber(forScore[4],forScore[5]);
-            lastNumber = randomNumber(forScore[4],forScore[5]);
-            answer = firstNumber + lastNumber;
-        break;
-        case 1:// '-'
-            firstNumber = randomNumber(forScore[4],forScore[5]);
-            lastNumber = randomNumber(forScore[4],forScore[5]);
-            let a;
-            if(firstNumber < lastNumber){
-                answer = lastNumber - firstNumber;
-                a=lastNumber;
-                lastNumber = firstNumber;
-                firstNumber = a;
-            } else if(firstNumber = lastNumber){
-                firstNumber = firstNumber + 1;
-                answer = firstNumber - lastNumber;
-            } else {
-                answer = firstNumber - lastNumber;
-            }
-        break;
-        case 2:// '*'
-            firstNumber = randomNumber(forScore[6],forScore[7]);
-            lastNumber = randomNumber(forScore[6],forScore[7]);
-            answer = firstNumber * lastNumber;
-        break;
-        case 3:// '/'
-            let forSort;
-            for(let i =0;i < 1;){
+    for(let l=0;l<10;){
+        switch(symbol){
+            case 0: // '+'
+                firstNumber = randomNumber(forScore[4],forScore[5]);
+                lastNumber = randomNumber(forScore[4],forScore[5]);
+                answer = firstNumber + lastNumber;
+            break;
+            case 1:// '-'
+                firstNumber = randomNumber(forScore[4],forScore[5]);
+                lastNumber = randomNumber(forScore[4],forScore[5]);
+                let a;
+                if(firstNumber < lastNumber){
+                    answer = lastNumber - firstNumber;
+                    a=lastNumber;
+                    lastNumber = firstNumber;
+                    firstNumber = a;
+                } else if(firstNumber = lastNumber){
+                    firstNumber = firstNumber + 1;
+                    answer = firstNumber - lastNumber;
+                } else {
+                    answer = firstNumber - lastNumber;
+                }
+            break;
+            case 2:// '*'
                 firstNumber = randomNumber(forScore[6],forScore[7]);
                 lastNumber = randomNumber(forScore[6],forScore[7]);
-                if(firstNumber == lastNumber || firstNumber == 0 ||lastNumber == 0 || firstNumber == 1 ||lastNumber == 1){
-                } else{
-                    forSort = firstNumber * lastNumber;
-                    firstNumber =forSort;
-                    answer = forSort / lastNumber;
-                    i++;
+                answer = firstNumber * lastNumber;
+            break;
+            case 3:// '/'
+                let forSort;
+                for(let i =0;i < 1;){
+                    firstNumber = randomNumber(forScore[6],forScore[7]);
+                    lastNumber = randomNumber(forScore[6],forScore[7]);
+                    if(firstNumber == lastNumber || firstNumber == 0 ||lastNumber == 0 || firstNumber == 1 ||lastNumber == 1){
+                    } else{
+                        forSort = firstNumber * lastNumber;
+                        firstNumber =forSort;
+                        answer = forSort / lastNumber;
+                        i++;
+                    }
+                }
+            break;
+        }
+        console.log('пример нормальный');
+        console.log('firstNumber = ', firstNumber, 'lastNumber = ', lastNumber,'symbol = ', symbol);
+        let number = score*3;
+        let a=0;
+        if(score == 0){
+            l=12;
+        }else{
+            for(let i=2;i<number;i+=3){
+                if (symbol == forMistake[i]){
+                    if(firstNumber == forMistake[i-2] && lastNumber == forMistake[i-1]){
+                        console.log('повторение');
+                        console.log('firstNumber = ', firstNumber, 'lastNumber = ', lastNumber,'symbol = ', symbol,'forMistake[i-2] = ', forMistake[i-2],'forMistake[i-1] = ', forMistake[i-1],'forMistake[i] = ', forMistake[i],);
+                        a++;
+                    } 
                 }
             }
-        break;
+            if(a==0){
+                l=12;
+            }
+        }
+        forMistake[number] = firstNumber;
+        forMistake[number+1] = lastNumber;
+        forMistake[number+2] = symbol;
     }
+
     inputExample.outerHTML = `<p id="example">${ firstNumber } ${ symbolArray[symbol] } ${ lastNumber } = </p>`;
     console.log(answer);
     inputScore.outerHTML = `<p id="score">${score}/${countExample}</p>`;
+}
+function dotToo(firstNumber, lastNumber, symbol){
+    let number = score*3;
+    if(score == 0){
+    }else{
+        for(let i=2;i<number;i+=3){
+            if (symbol == forMistake[i]){
+                if(firstNumber == forMistake[i-2] && lastNumber == forMistake[i-1]){
+                    console.log('повторение');
+                    setExample();
+                }
+            }
+        }
+    }
+    forMistake[number] = firstNumber;
+    forMistake[number+1] = lastNumber;
+    forMistake[number+2] = symbol;
 }
 
 function randomNumber(min, max){
