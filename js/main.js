@@ -77,7 +77,6 @@ function dinamicRange(){
     }
     var width = valUpper * 100 / max;
     var left = valLower * 100 / max;
-    console.log(`width - ${width}, left - ${left}, valLower - ${forMemery[0]}, valUpper - ${forMemery[1]}`);
     $('.fill').css('left', 'calc(' + left + '%)');
     $('.fill').css('width', width - left + '%');
     
@@ -131,7 +130,6 @@ function dinamicRange(){
     }
     width = valUpper * 100 / max;
     left = valLower * 100 / max;
-    console.log(`width - ${width}, left - ${left}, lower-double - ${forMemery[2]}, upper-double - ${forMemery[3]}`);
     $('.fill-double').css('left', 'calc(' + left + '%)');
     $('.fill-double').css('width', width - left + '%');
     
@@ -174,6 +172,7 @@ function dinamicRange(){
     });
     // console.log('9');
 }
+//для того чтобы запоминать диапозон чисел
 
 
 function timer() {
@@ -310,7 +309,6 @@ function start_small(button){
     }
     var width = valUpper * 100 / max;
     var left = valLower * 100 / max;
-    console.log(`width - ${width}, left - ${left}, valLower - ${forMemery[0]}, valUpper - ${forMemery[1]}`);
     $('.fill').css('left', 'calc(' + left + '%)');
     $('.fill').css('width', width - left + '%');
 
@@ -363,7 +361,6 @@ function start_small(button){
         }
         width = valUpper * 100 / max;
         left = valLower * 100 / max;
-        console.log(`width - ${width}, left - ${left}, lower-double - ${forMemery[2]}, upper-double - ${forMemery[3]}`);
         $('.fill-double').css('left', 'calc(' + left + '%)');
         $('.fill-double').css('width', width - left + '%');
         
@@ -441,7 +438,6 @@ if (parseFloat(valLower) > parseFloat(valUpper)) {
 }
 var width = valUpper * 100 / max;
 var left = valLower * 100 / max;
-console.log(`width - ${width}, left - ${left}, valLower - ${forMemery[0]}, valUpper - ${forMemery[1]}`);
 $('.fill').css('left', 'calc(' + left + '%)');
 $('.fill').css('width', width - left + '%');
 
@@ -494,7 +490,6 @@ max = $('.upper-double').attr('max');
     }
     width = valUpper * 100 / max;
     left = valLower * 100 / max;
-    console.log(`width - ${width}, left - ${left}, lower-double - ${forMemery[2]}, upper-double - ${forMemery[3]}`);
     $('.fill-double').css('left', 'calc(' + left + '%)');
     $('.fill-double').css('width', width - left + '%');
     
@@ -719,10 +714,8 @@ function numberEnter(button){
 };
 
 function setExample(){
-    let test = sessionStorage.getItem('forScore',forScore);
-    let timeArrayString =[];
-    timeArrayString = sessionStorage.getItem('timeArray');
-    forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
+    forScore = (sessionStorage.getItem('forScore',forScore)).split(',');
+    // 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
 
     let inputExample = document.getElementById('example');
     let inputScore = document.getElementById('score');
@@ -731,23 +724,23 @@ function setExample(){
     let lastNumber = 0;
 
     let symbolArray = ['+', '-', '*', '/',];
-    var symbol = Math.round(Math.random(0,100)*3);
     for(let i=0;i<5;){
-        var symbol = Math.round(Math.random(0,100)*3);
+        var symbol = randomNumber(0, 3);
         if(forScore[symbol] == 1){
             i=10;
         }
     }
+    // проопускает только выбранные знаки препинания
     for(let l=0;l<10;){
         switch(symbol){
             case 0: // '+'
-                firstNumber = randomNumber(forScore[4],forScore[5]);
-                lastNumber = randomNumber(forScore[4],forScore[5]);
+                firstNumber = randomNumber(+forScore[4],+forScore[5]);
+                lastNumber = randomNumber(+forScore[4],+forScore[5]);
                 answer = firstNumber + lastNumber;
             break;
             case 1:// '-'
-                firstNumber = randomNumber(forScore[4],forScore[5]);
-                lastNumber = randomNumber(forScore[4],forScore[5]);
+                firstNumber = randomNumber(+forScore[4],+forScore[5]);
+                lastNumber = randomNumber(+forScore[4],+forScore[5]);
                 let a;
                 if(firstNumber < lastNumber){
                     answer = lastNumber - firstNumber;
@@ -762,15 +755,15 @@ function setExample(){
                 }
             break;
             case 2:// '*'
-                firstNumber = randomNumber(forScore[6],forScore[7]);
-                lastNumber = randomNumber(forScore[6],forScore[7]);
+                firstNumber = randomNumber(+forScore[6],+forScore[7]);
+                lastNumber = randomNumber(+forScore[6],+forScore[7]);
                 answer = firstNumber * lastNumber;
             break;
             case 3:// '/'
                 let forSort;
                 for(let i =0;i < 1;){
-                    firstNumber = randomNumber(forScore[6],forScore[7]);
-                    lastNumber = randomNumber(forScore[6],forScore[7]);
+                    firstNumber = randomNumber(+forScore[6],+forScore[7]);
+                    lastNumber = randomNumber(+forScore[6],+forScore[7]);
                     if(firstNumber == lastNumber || firstNumber == 0 ||lastNumber == 0 || firstNumber == 1 ||lastNumber == 1){
                     } else{
                         forSort = firstNumber * lastNumber;
@@ -781,8 +774,6 @@ function setExample(){
                 }
             break;
         }
-        console.log('пример нормальный');
-        console.log('firstNumber = ', firstNumber, 'lastNumber = ', lastNumber,'symbol = ', symbol);
         let number = score*3;
         let a=0;
         if(score == 0){
@@ -791,8 +782,6 @@ function setExample(){
             for(let i=2;i<number;i+=3){
                 if (symbol == forMistake[i]){
                     if(firstNumber == forMistake[i-2] && lastNumber == forMistake[i-1]){
-                        console.log('повторение');
-                        console.log('firstNumber = ', firstNumber, 'lastNumber = ', lastNumber,'symbol = ', symbol,'forMistake[i-2] = ', forMistake[i-2],'forMistake[i-1] = ', forMistake[i-1],'forMistake[i] = ', forMistake[i],);
                         a++;
                     } 
                 }
@@ -805,39 +794,16 @@ function setExample(){
         forMistake[number+1] = lastNumber;
         forMistake[number+2] = symbol;
     }
+    // создание примера и проверка на повторение примера, если пример повторяется то он просто перегенерирует
 
     inputExample.outerHTML = `<p id="example">${ firstNumber } ${ symbolArray[symbol] } ${ lastNumber } = </p>`;
     console.log(answer);
     inputScore.outerHTML = `<p id="score">${score}/${countExample}</p>`;
-}
-function dotToo(firstNumber, lastNumber, symbol){
-    let number = score*3;
-    if(score == 0){
-    }else{
-        for(let i=2;i<number;i+=3){
-            if (symbol == forMistake[i]){
-                if(firstNumber == forMistake[i-2] && lastNumber == forMistake[i-1]){
-                    console.log('повторение');
-                    setExample();
-                }
-            }
-        }
-    }
-    forMistake[number] = firstNumber;
-    forMistake[number+1] = lastNumber;
-    forMistake[number+2] = symbol;
-}
+}// генерациия примера
 
 function randomNumber(min, max){
-    let number;
-    for(let i = 0;i <5;){
-        number = Math.round(Math.random(0,100)*max);
-        if(number >=min){
-            i =10;
-        }
-    }
-    return number;
-}
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}// генерациия чисел
 
 function blink(input, color){
     let inpu = document.getElementById(input) ;
