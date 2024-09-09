@@ -5,57 +5,44 @@ var Home ='http://127.0.0.1:5501/MathScore/';
 var stringUse = Git;
 var answer = 0;
 var score = 0;
-var mistake = 0;
+var mistake = -1;
 var countExample = 10;
 var seconds = 0;
 var timeArray = [0, 0, 0, 0,0,0,0,0,0,0,];
 var forScore = [1,1,1,1,];
 var forMemery = [0,100,0,20,];
 var forMistake = [];
+var forCheck = -1;
 
 window.onload = function () {
     if(document.location.href == stringUse+'index.html'){
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        for(let i =0;i<=3;i++){    
-            if(forScore[i]==1){
-                checkboxes[i].checked = true;
-                // console.log('5');
-            }
-        }
-        let test = localStorage.getItem('forScore',forScore);
-        let a = null;
-        // if(forScore[0] == 1 || forScore[1] == 1 || forScore[2] == 1 || forScore[3] == 1){
-        //     forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
-        //     forScore[4] = forScore[8];
-        //     dinamicRange()
-        // }else{
-        //     forScore[0] = 1;
-        //     forScore[1] = 1;
-        //     forScore[2] = 1;
-        //     forScore[3] = 1;
-        // }
-            // console.log('1');
+        let test = sessionStorage.getItem('forScore',forScore);
         if (test === null || test === undefined || test === '') {
-            forScore[0] = 1;
-            forScore[1] = 1;
-            forScore[2] = 1;
-            forScore[3] = 1;
-            // console.log('2');
+            console.log('first');
+            forScore = [1,1,1,1,];
+            for(let i =0;i<=3;i++){
+                if(forScore[i] == 1){
+                    checkboxes[i].checked = true;
+                }
+            }
         } else {
-            // console.log('3');
+            console.log('another');
             forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
-            forScore[0] = 1;
-            forScore[1] = 1;
-            forScore[2] = 1;
-            forScore[3] = 1;
-            forScore[4] = forScore[8];
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            for(let i =0;i<=3;i++){
+                if(forScore[i] == 1){
+                    checkboxes[i].checked = true;
+                }
+            }
+            if(forScore[8] == 1){
+                checkboxes[4].checked = true;
+            }
             dinamicRange()
         }
-        // console.log('6');
-        localStorage.setItem('forScore',forScore);
+
         sessionStorage.setItem('forScore',forScore);
     }
-
 
     firstTry();
 }
@@ -183,8 +170,6 @@ function timer() {
 
 function firstTry(){
     score = sessionStorage.getItem('score');
-    let test= sessionStorage.getItem('forScore',forScore);
-    forScore = test.split(',');// 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
     if(document.location.href == (stringUse+'html/add.html')){
         score = 0;
         setExample();
@@ -208,6 +193,7 @@ function firstTry(){
                 min = timeArray[i];
             }
         };
+
 
         let inputExample = document.getElementById('message-first') ;
         if(forScore[8]==1){
@@ -261,7 +247,7 @@ function start(button){
     forScore[6]= inputLower[2].value;
     forScore[7]= inputLower[3].value;
     sessionStorage.setItem('forScore',forScore);
-    localStorage.setItem('forScore',forScore);
+    sessionStorage.setItem('forScore',forScore);
 
     forMemery[0]= $('.lower').val();
     forMemery[1]= $('.upper').val();
@@ -716,7 +702,6 @@ function numberEnter(button){
 function setExample(){
     forScore = (sessionStorage.getItem('forScore',forScore)).split(',');
     // 1+  2-  3x  4/ +-(min) +-(max) x/(min)  x/(max)
-
     let inputExample = document.getElementById('example');
     let inputScore = document.getElementById('score');
 
