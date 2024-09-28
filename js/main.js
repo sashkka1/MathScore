@@ -280,8 +280,8 @@ function start_small(button){
 
 
     // console.log('7');
-    let test = localStorage.getItem('forMemery',forMemery);
-    forMemery = test.split(',');// 1valLower  2valUpper  3lower-double  4upper-double 
+    // let test = localStorage.getItem('forMemery',forMemery);
+    // forMemery = test.split(',');// 1valLower  2valUpper  3lower-double  4upper-double 
     // console.log('8');
     var max = $('.upper').attr('max');
     var min = $('.lower').attr('min');
@@ -409,8 +409,8 @@ function start_big(button){
         checkboxes[i].checked = true;
     }
     // console.log('7');
-let test = localStorage.getItem('forMemery',forMemery);
-forMemery = test.split(',');// 1valLower  2valUpper  3lower-double  4upper-double 
+// let test = localStorage.getItem('forMemery',forMemery);
+// forMemery = test.split(',');// 1valLower  2valUpper  3lower-double  4upper-double 
 // console.log('8');
 var max = $('.upper').attr('max');
 var min = $('.lower').attr('min');
