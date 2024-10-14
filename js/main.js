@@ -16,6 +16,12 @@ var forCheck = -1;
 
 window.onload = function () {
     if(document.location.href == stringUse+'index.html'){
+
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        for(let i =0;i<=4;i++){    
+            checkboxes[i].checked = true;
+        }
+
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         let test = sessionStorage.getItem('forScore',forScore);
         if (test === null || test === undefined || test === '') {
@@ -230,7 +236,7 @@ function start(button){
         button.classList.remove('flash');
     }, 200);
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    forScore = [0,0,0,0,0,0,0,0,0,];
+    // forScore = [0,0,0,0,0,0,0,0,0,];
     for(let i =0;i<=3;i++){
         if(checkboxes[i].checked){
             forScore[i] = 1;
@@ -246,7 +252,6 @@ function start(button){
     forScore[5]= inputLower[1].value;
     forScore[6]= inputLower[2].value;
     forScore[7]= inputLower[3].value;
-    sessionStorage.setItem('forScore',forScore);
     sessionStorage.setItem('forScore',forScore);
 
     forMemery[0]= $('.lower').val();
@@ -267,9 +272,6 @@ function start_small(button){
     }, 200);
 
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    for(let i =0;i<=4;i++){    
-        checkboxes[i].checked = false;
-    }
     for(let i =0;i<=4;i++){    
         checkboxes[i].checked = true;
     }
