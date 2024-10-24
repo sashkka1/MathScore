@@ -76,12 +76,12 @@ window.onload = function () {
 
     const user = Telegram.WebApp.initDataUnsafe.user;
     
-    if (user) {
-        const username = user.username || "Имя пользователя недоступно";
-        document.getElementById('notificationp').innerText = `Привет: ${username}`;
-    } else {
-        document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе.2";
-    }
+    // if (user) {
+    //     const username = user.username || "Имя пользователя недоступно";
+    //     document.getElementById('notificationp').innerText = `Привет: ${username}`;
+    // } else {
+    //     document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе";
+    // }
     if (user && user.photo_url) {
         // Создаем элемент изображения
         const img = document.createElement('img');
