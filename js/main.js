@@ -25,19 +25,19 @@ window.onload = function () {
 
         // const user = 'Telegram.WebApp.initDataUnsafe.user';
 
-        // const user = Telegram.WebApp.initDataUnsafe.user;
+        const user = Telegram.WebApp.initDataUnsafe.user;
 
-        // if (user) {
-        //     const username = user.username || "Имя пользователя недоступно";
-        //     document.getElementById('user-info').innerText = `Ваше имя пользователя: ${username}`;
-        // } else {
-        //     document.getElementById('user-info').innerText = "Не удалось получить информацию о пользователе.";
-        // }
+        if (user) {
+            const username = user.username || "Имя пользователя недоступно";
+            document.getElementById('user-info').innerText = `Ваше имя пользователя: ${username}`;
+        } else {
+            document.getElementById('user-info').innerText = "Не удалось получить информацию о пользователе.";
+        }
 
 
 
-        // let notification = document.getElementById('notificationp');
-        // notification.outerHTML = `<p id="notificationp">${ user } </p>`;
+        let notification = document.getElementById('notificationp');
+        notification.outerHTML = `<p id="notificationp">${ user } </p>`;
 
 
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
