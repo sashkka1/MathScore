@@ -23,7 +23,7 @@ var forCheck = -1;
 window.onload = function () {
     if(document.location.href == stringUse+'index.html'){
 
-        document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе.";
+        // document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе.";
 
         // const user = Telegram.WebApp.initDataUnsafe.user;
         
@@ -34,9 +34,8 @@ window.onload = function () {
         //     document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе.2";
         // }
 
-        // let notification = document.getElementById('example');
-        // notification.outerHTML = `<p id="example">sdfsdf = </p>`;
-        // inputExample.outerHTML = `<p id="example">${ firstNumber } ${ symbolArray[symbol] } ${ lastNumber } = </p>`;
+        let notification = document.getElementById('notificationp');
+        notification.outerHTML = `<p id="notificationp">sdfsdf = </p>`;
 
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         for(let i =0;i<=4;i++){    
