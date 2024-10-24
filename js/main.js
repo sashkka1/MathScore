@@ -24,7 +24,7 @@ window.onload = function () {
     if(document.location.href == stringUse+'index.html'){
 
 
-        const user = Telegram.WebApp.initDataUnsafe.user;
+        // const user = Telegram.WebApp.initDataUnsafe.user;
         document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе.";
         // if (user) {
         //     const username = user.username || "Имя пользователя недоступно";
