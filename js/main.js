@@ -26,7 +26,7 @@ window.onload = function () {
 
         const user = Telegram.WebApp.initDataUnsafe.user;
 
-        document.getElementById('notificationp').innerText = "Проверка 1";
+        document.getElementById('notificationp').innerText = "Проверка 2";
         
         if (user) {
             const username = user.username || "Имя пользователя недоступно";
