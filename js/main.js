@@ -87,10 +87,12 @@ window.onload = function () {
         const img = document.createElement('img');
         img.src = user.photo_url;
         img.alt = 'User Photo';
+        img.style.width = '100px'; // Устанавливаем ширину изображения
+        img.style.height = '100px'; // Устанавливаем высоту изображения
         // Добавляем изображение в контейнер
         document.getElementById('notificationimg').appendChild(img);
     } else {
-        console.log('Фото пользователя недоступно');
+        document.getElementById('notificationpp').innerText = "Фото пользователя недоступно";
     }
 
     
