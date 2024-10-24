@@ -23,17 +23,20 @@ var forCheck = -1;
 window.onload = function () {
     if(document.location.href == stringUse+'index.html'){
 
-
-        // const user = Telegram.WebApp.initDataUnsafe.user;
         document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе.";
-        // if (user) {
-        //     const username = user.username || "Имя пользователя недоступно";
-        //     document.getElementById('notificationp').innerText = `Ваше имя пользователя: ${username}`;
-        // } else {
-        //     document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе.";
-        // }
 
+        const user = Telegram.WebApp.initDataUnsafe.user;
+        
+        if (user) {
+            const username = user.username || "Имя пользователя недоступно";
+            document.getElementById('notificationp').innerText = `Ваше имя пользователя: ${username}`;
+        } else {
+            document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе.2";
+        }
 
+        // let notification = document.getElementById('example');
+        // notification.outerHTML = `<p id="example">sdfsdf = </p>`;
+        // inputExample.outerHTML = `<p id="example">${ firstNumber } ${ symbolArray[symbol] } ${ lastNumber } = </p>`;
 
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         for(let i =0;i<=4;i++){    
