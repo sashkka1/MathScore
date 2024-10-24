@@ -23,7 +23,6 @@ var forCheck = -1;
 window.onload = function () {
     if(document.location.href == stringUse+'index.html'){
 
-        // const user = 'Telegram.WebApp.initDataUnsafe.user';
 
         const user = Telegram.WebApp.initDataUnsafe.user;
 
@@ -34,10 +33,15 @@ window.onload = function () {
             document.getElementById('user-info').innerText = "Не удалось получить информацию о пользователе.";
         }
 
-
+        // if (user) {
+        //     const username = user.username || "Имя пользователя недоступно";
+        //     document.getElementById('user-info').innerText = `Ваше имя пользователя: ${username}`;
+        // } else {
+        //     document.getElementById('user-info').innerText = "Не удалось получить информацию о пользователе.";
+        // }
 
         let notification = document.getElementById('notificationp');
-        notification.outerHTML = `<p id="notificationp">${ user } </p>`;
+        notification.outerHTML = `<p id="notificationp">${ username } </p>`;
 
 
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
