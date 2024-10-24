@@ -34,6 +34,8 @@ window.onload = function () {
         //     document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе.2";
         // }
 
+
+
         let notification = document.getElementById('notificationp');
         notification.outerHTML = `<p id="notificationp">sdfsdf = </p>`;
 
@@ -70,6 +72,22 @@ window.onload = function () {
         sessionStorage.setItem('forScore',forScore);
     }
 
+    // document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе.";
+
+    // const user = Telegram.WebApp.initDataUnsafe.user;
+    
+    // if (user) {
+    //     const username = user.username || "Имя пользователя недоступно";
+    //     document.getElementById('notificationp').innerText = `Ваше имя пользователя: ${username}`;
+    // } else {
+    //     document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе.2";
+    // }
+
+
+    
+    let notification = document.getElementById('notificationp');
+    notification.outerHTML = `<p id="notificationp">sdfsdf = </p>`;
+    
     firstTry();
 }
 
