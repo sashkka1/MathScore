@@ -14,8 +14,31 @@ var forMemery = [0,100,0,20,];
 var forMistake = [];
 var forCheck = -1;
 
+
+
+
+
+
+
 window.onload = function () {
     if(document.location.href == stringUse+'index.html'){
+
+        // const user = 'Telegram.WebApp.initDataUnsafe.user';
+
+        const user = Telegram.WebApp.initDataUnsafe.user;
+
+        if (user) {
+            const username = user.username || "Имя пользователя недоступно";
+            document.getElementById('user-info').innerText = `Ваше имя пользователя: ${username}`;
+        } else {
+            document.getElementById('user-info').innerText = "Не удалось получить информацию о пользователе.";
+        }
+
+
+
+        let notification = document.getElementById('notificationp');
+        notification.outerHTML = `<p id="notificationp">${ user } </p>`;
+
 
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         for(let i =0;i<=4;i++){    
@@ -936,4 +959,10 @@ jQuery(document).ready(function() {
 		var valUpper = $('.upper-double').val();
 		$(this).val(Math.floor(valUpper));
 	});
+});
+
+
+document.getElementById('notification-button').addEventListener('click', function() {
+    const block = document.getElementById('notification');
+    block.classList.add('notification-close');
 });
