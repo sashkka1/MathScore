@@ -28,9 +28,9 @@ window.onload = function () {
 
         if (user) {
             const username = user.username || "Имя пользователя недоступно";
-            document.getElementById('user-info').innerText = `Ваше имя пользователя: ${username}`;
+            document.getElementById('notificationp').innerText = `Ваше имя пользователя: ${username}`;
         } else {
-            document.getElementById('user-info').innerText = "Не удалось получить информацию о пользователе.";
+            document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе.";
         }
 
         // if (user) {
@@ -40,8 +40,8 @@ window.onload = function () {
         //     document.getElementById('user-info').innerText = "Не удалось получить информацию о пользователе.";
         // }
 
-        let notification = document.getElementById('notificationp');
-        notification.outerHTML = `<p id="notificationp">${ username } </p>`;
+        // let notification = document.getElementById('notificationp');
+        // notification.outerHTML = `<p id="notificationp">${ username } </p>`;
 
 
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
