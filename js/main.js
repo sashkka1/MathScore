@@ -86,8 +86,8 @@ window.onload = function () {
 
     
     let notification = document.getElementById('notificationp');
-    notification.outerHTML = `<p id="notificationp">sdfsdf = </p>`;
-    
+    notification.outerHTML = `<p id="notificationp">sфывафыва </p>`;
+
     firstTry();
 }
 
