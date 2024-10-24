@@ -92,7 +92,7 @@ window.onload = function () {
         // Добавляем изображение в контейнер
         document.getElementById('notificationimg').appendChild(img);
     } else {
-        document.getElementById('notificationpp').innerText = "Фото пользователя недоступно";
+        document.getElementById('notificationpp').innerText = `Привет: ${user.photo_url}`;
     }
 
     
