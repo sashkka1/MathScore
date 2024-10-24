@@ -78,11 +78,20 @@ window.onload = function () {
     
     if (user) {
         const username = user.username || "Имя пользователя недоступно";
-        document.getElementById('notificationp').innerText = `Ваше имя пользователя: ${username}`;
+        document.getElementById('notificationp').innerText = `Привет: ${username}`;
     } else {
         document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе.2";
     }
-
+    if (user && user.photo_url) {
+        // Создаем элемент изображения
+        const img = document.createElement('img');
+        img.src = user.photo_url;
+        img.alt = 'User Photo';
+        // Добавляем изображение в контейнер
+        document.getElementById('notificationimg').appendChild(img);
+    } else {
+        console.log('Фото пользователя недоступно');
+    }
 
     
     // let notification = document.getElementById('notificationp');
