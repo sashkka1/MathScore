@@ -55,7 +55,7 @@ window.onload = function () {
         sessionStorage.setItem('forScore',forScore);
     }
 
-    // const user = Telegram.WebApp.initDataUnsafe.user;
+     // const user = Telegram.WebApp.initDataUnsafe.user;
     
     // if (user) {
     //     const username = user.username || "Имя пользователя недоступно";
@@ -74,6 +74,20 @@ window.onload = function () {
     //     document.getElementById('notificationimg').appendChild(img);
     // } else {
     //     document.getElementById('notificationpp').innerText = `url фото -  ${user.photo_url}`;
+    // }
+    // const tg = window.Telegram.WebApp;
+    // const user = tg.initDataUnsafe.user;
+    
+    // if (user) {
+    //     const username = user.username || "Имя пользователя недоступно";
+    //     document.getElementById('notificationp').innerText = `Привет: ${username}`;
+    // } else {
+    //     document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе";
+    // }
+    // if (user.photo) {
+    //     document.getElementById('userPhoto').src = user.photo;
+    // } else {
+    //     document.getElementById('notificationpp').innerText = `url фото -  ${user.photo}`;
     // }
 
 
