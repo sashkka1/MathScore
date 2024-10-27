@@ -55,25 +55,6 @@ window.onload = function () {
         sessionStorage.setItem('forScore',forScore);
     }
 
-    let NewName;
-    let Name;
-    document.getElementById('notification-count').innerHTML = `count ${Name}` ;
-    window.Telegram.WebApp.CloudStorage.getItem("count", (err, Name) => {
-        console.log(`вывод 1  ${Name}`);
-        if (!Name) {
-            console.log(`вывод 2  ${Name}`);
-            Name =0;
-        } else{
-            console.log(`вывод 3  ${Name}`);
-            NewName = Name;
-            console.log(`вывод 4  ${NewName}`);
-        Name++;
-        }
-        window.Telegram.WebApp.CloudStorage.setItem("count", Name);
-        document.getElementById('notification-count').innerHTML = `count ${Name}` ;
-    });
-
-
     firstTry();
 }
 
