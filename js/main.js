@@ -55,40 +55,23 @@ window.onload = function () {
         sessionStorage.setItem('forScore',forScore);
     }
 
-     // const user = Telegram.WebApp.initDataUnsafe.user;
-    
-    // if (user) {
-    //     const username = user.username || "Имя пользователя недоступно";
-    //     document.getElementById('notificationp').innerText = `Привет: ${username}`;
-    // } else {
-    //     document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе";
-    // }
-    // if (user && user.photo_url) {
-    //     // Создаем элемент изображения
-    //     const img = document.createElement('img');
-    //     img.src = user.photo_url;
-    //     img.alt = 'User Photo';
-    //     img.style.width = '100px'; // Устанавливаем ширину изображения
-    //     img.style.height = '100px'; // Устанавливаем высоту изображения
-    //     // Добавляем изображение в контейнер
-    //     document.getElementById('notificationimg').appendChild(img);
-    // } else {
-    //     document.getElementById('notificationpp').innerText = `url фото -  ${user.photo_url}`;
-    // }
-    // const tg = window.Telegram.WebApp;
-    // const user = tg.initDataUnsafe.user;
-    
-    // if (user) {
-    //     const username = user.username || "Имя пользователя недоступно";
-    //     document.getElementById('notificationp').innerText = `Привет: ${username}`;
-    // } else {
-    //     document.getElementById('notificationp').innerText = "Не удалось получить информацию о пользователе";
-    // }
-    // if (user.photo) {
-    //     document.getElementById('userPhoto').src = user.photo;
-    // } else {
-    //     document.getElementById('notificationpp').innerText = `url фото -  ${user.photo}`;
-    // }
+    let NewName;
+    let Name;
+    document.getElementById('notification-count').innerHTML = `count ${Name}` ;
+    window.Telegram.WebApp.CloudStorage.getItem("count", (err, Name) => {
+        console.log(`вывод 1  ${Name}`);
+        if (!Name) {
+            console.log(`вывод 2  ${Name}`);
+            Name =0;
+        } else{
+            console.log(`вывод 3  ${Name}`);
+            NewName = Name;
+            console.log(`вывод 4  ${NewName}`);
+        Name++;
+        }
+        window.Telegram.WebApp.CloudStorage.setItem("count", Name);
+        document.getElementById('notification-count').innerHTML = `count ${Name}` ;
+    });
 
 
     firstTry();
