@@ -22,8 +22,8 @@ var forCheck = -1;
 
 window.onload = function () {
     const tg = window.Telegram.WebApp;
-    console.log(`viewportStableHeight ${tg.viewportStableHeight}`);
     tg.expand();
+    tg.disableVerticalSwipes();
     if(document.location.href == stringUse+'index.html'){
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         for(let i =0;i<=4;i++){    
