@@ -21,9 +21,7 @@ var forCheck = -1;
 
 
 window.onload = function () {
-    const tg = window.Telegram.WebApp;
-    tg.expand();
-    tg.disableVerticalSwipes();
+    
     if(document.location.href == stringUse+'index.html'){
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         for(let i =0;i<=4;i++){    
@@ -57,6 +55,11 @@ window.onload = function () {
 
         sessionStorage.setItem('forScore',forScore);
     }
+
+
+    window.Telegram.WebApp.expand();
+    window.Telegram.WebApp.disableVerticalSwipes();
+
 
     firstTry();
 }
