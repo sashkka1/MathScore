@@ -183,8 +183,6 @@ function timer() {
 }
 
 function firstTry(){
-    window.Telegram.WebApp.expand();
-window.Telegram.WebApp.disableVerticalSwipes();
     score = sessionStorage.getItem('score');
     if(document.location.href == (stringUse+'html/add.html')){
         score = 0;
