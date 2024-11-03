@@ -14,8 +14,8 @@ var forMemery = [0,100,0,20,];
 var forMistake = [];
 var forCheck = -1;
 
-window.Telegram.WebApp.expand();
-window.Telegram.WebApp.disableVerticalSwipes();
+// window.Telegram.WebApp.expand();
+// window.Telegram.WebApp.disableVerticalSwipes();
 
 
 
@@ -183,6 +183,8 @@ function timer() {
 }
 
 function firstTry(){
+    window.Telegram.WebApp.expand();
+window.Telegram.WebApp.disableVerticalSwipes();
     score = sessionStorage.getItem('score');
     if(document.location.href == (stringUse+'html/add.html')){
         score = 0;
