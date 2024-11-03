@@ -14,14 +14,15 @@ var forMemery = [0,100,0,20,];
 var forMistake = [];
 var forCheck = -1;
 
-
+window.Telegram.WebApp.expand();
+window.Telegram.WebApp.disableVerticalSwipes();
 
 
 
 
 
 window.onload = function () {
-    
+
     if(document.location.href == stringUse+'index.html'){
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         for(let i =0;i<=4;i++){    
@@ -55,10 +56,6 @@ window.onload = function () {
 
         sessionStorage.setItem('forScore',forScore);
     }
-
-
-    window.Telegram.WebApp.expand();
-    window.Telegram.WebApp.disableVerticalSwipes();
 
 
     firstTry();
