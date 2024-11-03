@@ -945,9 +945,3 @@ jQuery(document).ready(function() {
 		$(this).val(Math.floor(valUpper));
 	});
 });
-
-
-document.getElementById('notification-button').addEventListener('click', function() {
-    const block = document.getElementById('notification');
-    block.classList.add('notification-close');
-});
