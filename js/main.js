@@ -790,7 +790,6 @@ function setExample(){
         forMistake[number+2] = symbol;
     }
     // создание примера и проверка на повторение примера, если пример повторяется то он просто перегенерирует
-
     inputExample.outerHTML = `<p id="example">${ firstNumber } ${ symbolArray[symbol] } ${ lastNumber } = </p>`;
     console.log(answer);
     inputScore.outerHTML = `<p id="score">${score}/${countExample}</p>`;
@@ -809,7 +808,7 @@ function blink(input, color){
     }, 400);
 }
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function() {// код первого ползунка диапозона на старте
 	$('.upper').on('input', setFill);
 	$('.lower').on('input', setFill);
 
@@ -878,7 +877,7 @@ jQuery(document).ready(function() {
 	});
 });
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function() { // код первого ползунка диапозона на старте
 	$('.upper-double').on('input', setFill);
 	$('.lower-double').on('input', setFill);
 
